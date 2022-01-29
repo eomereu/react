@@ -6,11 +6,32 @@ npx create-react-app my-app
 cd my-app
 npm start
 ```
+
+## General Notes
 - Normally some code inside our *.js file* doesn't work. But our `npm start` transforms it before delivering it to the browser. It ensures that we can write a simple and readable code which is still running when delivered to the browser.
 
 - The first file is to be executed is `index.js` **!**
 
 - If the imported thing is a library or our own *.js file* then we should omit the extension.
+
+- It is the best practice to keep every component in a seperate file. So since we will end up with hundreds of component we better create a folder *'compoenents'* under *'src'* folder.
+
+- We can render/include components within other components. So we build a component tree. *(See [the image](https://ibb.co/XD8qsTd) for the schema...)*
+
+- Example naming convention for component files are like following: *ExpenseItem.js*... Our custom components **must** start with capital letter so that React can detect them.
+
+- A component in React is just a JavaScript function!
+
+- In a component's return statement **only one root *(div section)*** is allowed at the outmost level. Inner divs can occur.
+
+- Inside return statement, correct formatting might be painful. In order to bypass this *(on Visual Studio Code)*:
+    - Install **'Prettier'** extension
+    - Go to **File -> Preferences -> Settings** and type **'format'**
+    - Under **'Editor: Default Formatter'** tab choose **'Prettier - Code Formatter'**  
+
+    After this and writing the inner HTML code in a mixed manner, just simply use **auto format shortcut**. In order to explore the shortcut *(on Visual Studio Code)*:
+    - Go to **File -> Preferences -> Keyboard Shortcuts**
+    - Type **'format document'** and see/modify **'Format Document'** shortcut on the first line.
 
 ## Inside `index.js`
 Basically to import react:
