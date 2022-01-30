@@ -33,6 +33,19 @@ npm start
     - Go to **File -> Preferences -> Keyboard Shortcuts**
     - Type **'format document'** and see/modify **'Format Document'** shortcut on the first line.
 
+- Typically when creating a styling of a component (of course as a css file) we name it same with the component in the same directory. *(e.g. ExpenseItem.js ExpenseItem.css)*
+
+- For *css file* to be considered in our *js file* by *React* we should explicitly state it by importing:
+    ```javascript
+    import './ExpenseItem.css'
+    ```
+
+- Inside *js file* actually the code is not HTML! It **looks like** HTML. So the tags for some HTML elements must be like following:
+    - class -> `className=""`
+    ```javascript
+    <div className="expense-item">...</div>
+    ```
+
 ## Inside `index.js`
 Basically to import react:
 ```javascript
