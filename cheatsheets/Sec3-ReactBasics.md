@@ -75,3 +75,25 @@ In our case above, it takes the component exported from our related *.js file* w
 ## Introducing JSX
 JSX simply means JavaScriptXML. It helps us to write user friendly code. It lets us to write HTML code directtly inside js files and transforms this HTML code. In Chrome when we inspect our basic webpage, under **static/js** folder we can see the *main.chunk.js* file which is our *App.js* file in our case. However when we find our simple method, we can see its transformed and more complicated version.
 
+## Outputting Dynamic Data
+Thanks to React we can output dynamic data inside our HTML-like code within our components. All we need to do is surround them by curly braces:
+```javascript
+const expenseTitle = 'Car Insurance';
+return (
+    <h2>{expenseTitle}</h2>
+)
+```
+We can even process JavaScript expressions:
+```javascript
+return (
+    <p>{Math.random()}</p>
+)
+```
+If we want to output a Date object created via JS, we need to turn it into **ISO String** to be able to print it out via `.toISOString()` method:
+```javascript
+const expenseDate = new Date(24, 0, 2020);
+return (
+    <h2>{expenseDate.toISOString()}</h2>
+)
+```
+> *Please note that months start from 0 (Jan -> 0, Feb -> 1, ..., Dec -> 11) and the order is (DD, MM, YYYY)*
