@@ -97,3 +97,27 @@ return (
 )
 ```
 > *Please note that months start from 0 (Jan -> 0, Feb -> 1, ..., Dec -> 11) and the order is (DD, MM, YYYY)*
+
+## Passing Data via `props`
+Components can't just use data stored in other components, we need to pass them. *(See https://ibb.co/mRfyXvB)* We want the data to be dynamic and components to be independent of them. So we want to specify them in **App.js** and pass those arguments to our components *(e.g. ExpenseItem)*while embedding them into the HTML-like code. When we want to access the attributes that we specified within **App.js** from our component we need to set the parameter just simply as **props**. It will automatically create an object which holds all the attributes we have used.  
+App.js
+```javascript
+...
+function App() {
+  const expenses = [ { id: 'e1', title: 'Toilet Paper', } ];
+  return (
+    <div> <ExpenseItem title={expenses[0].title}></ExpenseItem> </div>
+  );
+...
+```
+ExpenseItem.js
+```javascript
+...
+function ExpenseItem(props) {
+  return (
+    <div> <h2>{props.title}</h2> </div>
+  )
+}
+...
+```
+> *Ensure that the property names match! Also please note that the above lines are not ideally aligned but arranged to reduce line amount.*
