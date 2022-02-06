@@ -46,6 +46,8 @@ npm start
     <div className="expense-item">...</div>
     ```
 
+- *See **Date Function** section down below for advanced usage of `new Date()`.*
+
 ## Inside `index.js`
 Basically to import react:
 ```javascript
@@ -89,14 +91,6 @@ return (
     <p>{Math.random()}</p>
 )
 ```
-If we want to output a Date object created via JS, we need to turn it into **ISO String** to be able to print it out via `.toISOString()` method:
-```javascript
-const expenseDate = new Date(24, 0, 2020);
-return (
-    <h2>{expenseDate.toISOString()}</h2>
-)
-```
-> *Please note that months start from 0 (Jan -> 0, Feb -> 1, ..., Dec -> 11) and the order is (DD, MM, YYYY)*
 
 ## Passing Data via `props`
 Components can't just use data stored in other components, we need to pass them. *(See https://ibb.co/mRfyXvB)* We want the data to be dynamic and components to be independent of them. So we want to specify them in **App.js** and pass those arguments to our components *(e.g. ExpenseItem)*while embedding them into the HTML-like code. When we want to access the attributes that we specified within **App.js** from our component we need to set the parameter just simply as **props**. It will automatically create an object which holds all the attributes we have used.  
@@ -121,3 +115,33 @@ function ExpenseItem(props) {
 ...
 ```
 > *Ensure that the property names match! Also please note that the above lines are not ideally aligned but arranged to reduce line amount.*
+
+## Date Function (`new Date(dd, mm, yyyy)`)
+Creates a *date object* with the specified parameters.  
+Basic usage:
+```javascript
+const myDate = new Date(27, 0,)
+```
+If we want to output a Date object created via JS, we need to turn it into **ISO String** to be able to print it out via `.toISOString()` method:
+```javascript
+const expenseDate = new Date(24, 0, 2020);
+return (
+    <h2>{expenseDate.toISOString()}</h2>
+)
+```
+> *Please note that months start from 0 (jan -> 0, feb -> 1, ..., dec -> 11) and the order is (dd, mm, yyyy)*
+
+In order to transform **date** into more human readable format, we can use following JavaScript functions:
+  - [`.toLocaleString('language', { key: 'value'})`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString#using_tolocalestring) : Gives us month or day (as we specify) in a human readable format.
+  - [`.getFullYear()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getFullYear#using_getfullyear) : Returns us the year in 4 digits.
+  - In example:
+    ```javascript
+    const myDate = new Date(25, 8, 2021)
+    const day = myDate.toLocaleString('en-US', { day: '2-digit' })
+    const month = myDate.toLocaleString('en-US', { month: 'long' })
+    const year = myDate.getFullYear()
+
+    console.log(day) // 25
+    console.log(month) // September
+    console.log(year) // 2021
+    ```
