@@ -48,6 +48,13 @@ npm start
 
 - *See **Date Function** section down below for advanced usage of `new Date()`.*
 
+- It is a better practice to use the reduced *(the bolded ones)* expresssions:  
+  - **`<ExpenseItem />` =** `<ExpenseItem></ExpenseItem>`
+  - **`<ExpenseItem key='value' />` =** `<ExpenseItem key='value'></ExpenseItem>`
+  - **`<ExpenseItem key={dynamic_value} />` =** `<ExpenseItem key={dynamic_value}></ExpenseItem>`
+
+- It is generally a good practice to keep our components small and focused.
+
 ## Inside `index.js`
 Basically to import react:
 ```javascript
