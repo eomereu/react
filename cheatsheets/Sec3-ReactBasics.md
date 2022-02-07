@@ -57,6 +57,27 @@ npm start
 
 - A **Card *(Card.js and Card.css)*** generally refers to a container used within our UI.
 
+- In older versions of React, we had to import React (`import React from 'react';`) into our every single file, but not any more. Moreover the content used to look like this:
+  ```javascript
+  return React.createElement(
+    'div',
+    {},
+    React.createElement('h2', {}, 'Let\'s get started!'),
+    React.createElement(Expenses, { expenses: expenses })
+  );
+  ```
+  instead of
+  ```javascript
+  return (
+    <div>
+      <h2>Let's get started!</h2>
+      <Expenses expenses={expenses} currency={currency} />
+    </div>
+  );
+  ```
+  So thanks to **JSX** our components are much easier to implement and read.
+  > *PS: Also we can understand from the above code that why we need a single element around the inner elements (which is 'div' in our case). Because we may return only one thing, and that's what JSX doing; turning our HTML-like code into the code above and then to more browser friendly code behind the scenes.*
+
 ## Inside `index.js`
 Basically to import react:
 ```javascript
