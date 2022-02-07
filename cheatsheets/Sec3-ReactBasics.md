@@ -46,7 +46,7 @@ npm start
     <div className="expense-item">...</div>
     ```
 
-- *See **Date Function** section down below for advanced usage of `new Date()`.*
+- See [**Date Function**](https://github.com/eomereu/react/blob/main/cheatsheets/Sec3-ReactBasics.md#date-function-new-datedd-mm-yyyy) section down below for advanced usage of `new Date()`.
 
 - It is a better practice to use the reduced *(the bolded ones)* expresssions:  
   - **`<ExpenseItem />` =** `<ExpenseItem></ExpenseItem>`
@@ -54,6 +54,8 @@ npm start
   - **`<ExpenseItem key={dynamic_value} />` =** `<ExpenseItem key={dynamic_value}></ExpenseItem>`
 
 - It is generally a good practice to keep our components small and focused.
+
+- A **Card *(Card.js and Card.css)*** generally refers to a container used within our UI.
 
 ## Inside `index.js`
 Basically to import react:
@@ -152,3 +154,34 @@ In order to transform **date** into more human readable format, we can use follo
     console.log(month) // September
     console.log(year) // 2021
     ```
+
+## Composition *(`props.children`)*
+Whenever we wrap a component inside another one, actually we use the concept of **composition**. Other than just including smaller components into bigger ones, we can also include some shells around other components. This will save us from duplicate codes *(both JS and CSS codes)*. However we need to keep in mind that we need some extra stuff to make it work. Keep in mind that a **Card *(Card.js and Card.css)*** generally refers to a container used within our UI.  
+Card.js
+```javascript
+...
+function Card(props) {
+  const classes = 'card ' + props.className;
+  return <div className={classes}>{props.children}</div>;
+};
+...
+```
+- `props.children` allows our *shell* to include all our ingredients *(all the things inside our opening and closing tags of our custom component)*. It is a defaultly passed parameter provided by React.  
+- Defining the classes again like the above will allow us to handle the additional classes which our different components use along Card shell.  
+
+ExpenseItem.js
+```javascript
+...
+function ExpenseItem(props) {
+  return (
+    <Card className="expense-item">
+      <ExpenseDate date={props.date} />
+      <div className="expense-item__description">
+        <h2>{props.title}</h2>
+        <div className="expense-item__price">{props.currency + props.amount}</div>
+      </div>
+    </Card>
+  );
+}
+...
+```
