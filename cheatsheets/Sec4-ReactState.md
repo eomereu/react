@@ -18,3 +18,6 @@ const changeTitle = () => {...}
 <button onClick={changeTitle}>BtnTxt</button>
 ```
 > *Be aware that some programmes name these kind of functions with the name of event listener. i.e. instead of **changeTitle** above, they use something like **clickHandler**.*
+
+## "State"
+In the beginning React evaluates all components recursively up until a point which there is no more inner components and returns the JSX codes as interpreted accordingly. However it performs this just at the beginning once, but we need to make React re-evaluate some parts of components based on events such as clicking etc. Here comes the **State** structure.
