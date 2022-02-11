@@ -10,6 +10,7 @@ html {
 
 body {
   margin: 0;
-  background-color: #3f3f3f;
+  background: rgb(148,148,148);
+  background: radial-gradient(circle, rgba(148,148,148,1) 0%, rgba(13,13,13,1) 100%);
 }
 

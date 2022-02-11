@@ -1,0 +1,49 @@
+.new-expense {
+  background-color: rgba(243, 243, 243, 1);
+  background-image:  repeating-radial-gradient( circle at 0 0, transparent 0, rgba(243, 243, 243, 1) 80px ), repeating-linear-gradient( rgba(229, 229, 229, 0.5), rgba(229, 229, 229, 0.5) );
+  padding: 0.3rem 1.5rem 1.5rem 1.5rem;
+  margin: 2rem auto;
+  width: 50rem;
+  max-width: 95%;
+  border-radius: 12px;
+  text-align: center;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.25);
+}
+
+.new-expense button {
+  background-color: #c2fbd7;
+  border-radius: 10px;
+  box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.25);
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  display: inline-block;
+  font: inherit;
+  padding: 12px 30px;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25);
+  transition: all 250ms;
+  border: 2;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.new-expense button:hover,
+.new-expense button:active {
+  transform: scale(1.05) rotate(0deg);
+}
+/*
+.new-expense button.alternative {
+  color: #220131;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.new-expense button.alternative:hover,
+.new-expense button.alternative:active {
+  background-color: #ddb3f8;
+}
+*/
