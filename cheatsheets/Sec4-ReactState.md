@@ -79,15 +79,19 @@ const [userInput, setUserInput] = useState({
   enteredDate: ''
 })
 const titleChangeHandler = (event) => {
-  setUserInput({
-    ...userInput,
-    enteredTitle: event.target.value
+  // please see the next section for the explanation
+  // for the following three lines
+  setUserInput((prevState) => {
+    return { ...prevState,  enteredTitle: event.target.value };
   })
 }
 ```
 > *Please note that, the more common way is to use **single state**!*
 
-In this multiple state scenario and our implementation above, we are indeed *depending on our previous state*. In these kind of scenarios **which we depend on the previous state** *especially if we have a case like something incrementing*, we need to implement it by passing an arrow function to 
+## Updating State That Depends on the Previous State
+In following cases we need to use the implementation down below to safely depend on the previous state. Here we should pass in an arrow function to our **setting function** and `prevState` *-as an argument to this inner arrow funciton-* ensures us to safely refer to the previous state.
+1. When we use **single state approach**
+1. When we use operations like **incrementing/decrementing**
 ```javascript
 const titleChangeHandler = (event) => {
   setUserInput((prevState) => {
