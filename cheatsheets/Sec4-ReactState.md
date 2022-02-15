@@ -69,3 +69,19 @@ const amountChangeHandler = (event) => {
   }
 ```
 > *When we are getting user input, it always comes as **string** that's why we initialize **state** with an empty string up above. Also beware that we can have multiple states per component and they won't be effecting each other.*
+
+However we could also use just one state instead of multiple state, which may be thought as getting rid of duplicate states. In this case, we should set the state as an object. Furthermore, beware that when we are updating a value in that object, we should reassign the other ones also, otherwise those values will be lost, since React does not merge states. To do this, we can simply use the *spread operator*.
+```javascript
+const [userInput, setUserInput] = useState({
+  enteredTitle: '',
+  enteredAmount: '',
+  enteredDate: ''
+})
+const titleChangeHandler = (event) => {
+  setUserInput({
+    ...userInput,
+    enteredTitle: event.target.value
+  })
+}
+```
+> *Please note that, the more common way is to use **single state**!*
