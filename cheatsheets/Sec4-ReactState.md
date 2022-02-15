@@ -99,3 +99,26 @@ const titleChangeHandler = (event) => {
   })
 }
 ```
+
+## Handling Form Submission
+We could add an `onClick` listener to our button. However this is not a best way to listen to a button. Instead, if a button *(especially with a **submit** type)* is pressed inside of a form, the overall **form** element will emit an event which we can listen. So we cann add `onSubmit` event listener directly onto the **form** element:
+```javascript
+...
+return (
+  <form onSubmit={submitHandler}>
+  ...
+  </form>
+)
+```
+As a default when we use this -built-in- listener, it automatically refreshes the whole page as we use the button. But that's not what we want. Instead we want to handle this submission with javascript. Thankfully, we can disable this default behaviour by `event.preventDefault();`
+```javascript
+const submitHandler = (event) => {
+  event.preventDefault();
+
+  const expenseData = {
+    title: enteredTitle,
+    amount: enteredAmount,
+    date: new Date(enteredDate)
+  }
+}
+```
