@@ -44,8 +44,22 @@ const [title, setTitle] = useState(props.title);
 Finally we can use our `set` function *-destructured from `useState` and named by us-* to set a new value to that attribute:
 ```javascript
 const [title, setTitle] = useState(props.title);
-
+...
 const clickHandler = () => {
     setTitle('New Title');
+}
+...
+<button onClick={clickHandler}>Change Title</button>
+```
+
+## Listening to User Input
+We can listen to user input on input elements in many ways. However the most efficient one is `onChange`. We can use it on any type of input. In text inputs, it's trigerred with every key stroke. Inside we need to point to the function which we want to be executed when the event occurs, just like with `onClick`:
+```javascript
+<input type='text' onChange={titleChangeHandler} />
+```
+In order to be able to get user input we will benefit from `event` object which is a default javascript behavior we get in the browser while listening to events. We have lots of data on this object, but the important thing for us is `event.target.value` which holds the current value of the input at the point of time this event occurs. So in our handler function:
+```javascript
+const titleChangeHandler = (event) => {
+  console.log(event.target.value)
 }
 ```
