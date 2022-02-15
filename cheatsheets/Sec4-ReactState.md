@@ -59,7 +59,13 @@ We can listen to user input on input elements in many ways. However the most eff
 ```
 In order to be able to get user input we will benefit from `event` object which is a default javascript behavior we get in the browser while listening to events. We have lots of data on this object, but the important thing for us is `event.target.value` which holds the current value of the input at the point of time this event occurs. So in our handler function:
 ```javascript
+const [enteredTitle, setEnteredTitle] = useState('');
+const [enteredAmount, setEnteredAmount] = useState('');
 const titleChangeHandler = (event) => {
-  console.log(event.target.value)
+  setEnteredTitle(event.target.value)
 }
+const amountChangeHandler = (event) => {
+    setEnteredAmount(event.target.value)
+  }
 ```
+> *When we are getting user input, it always comes as **string** that's why we initialize **state** with an empty string up above. Also beware that we can have multiple states per component and they won't be effecting each other.*
