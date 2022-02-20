@@ -122,3 +122,7 @@ const submitHandler = (event) => {
   }
 }
 ```
+## Two-Way Binding
+Two-way binding simply means that, for inputs we don't just listen to changes but we can also pass a new value to the input so that we can reset or change the input. To do so *i.e.*:
+1. We add `value={enteredTitle}` to the **input element**
+2. We add `setEnteredTitle('')` to the **submitHandler**.
