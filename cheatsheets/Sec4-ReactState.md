@@ -17,7 +17,7 @@ const changeTitle = () => {...}
 ...
 <button onClick={changeTitle}>BtnTxt</button>
 ```
-> *Be aware that some programmes name these kind of functions with the name of event listener. i.e. instead of **changeTitle** above, they use something like **clickHandler**.*
+> *Be aware that some programmers name these kind of functions with the name of event listener. i.e. instead of **changeTitle** above, they use something like **clickHandler**.*
 
 ## "State"
 In the beginning React evaluates all components recursively up until a point which there is no more inner components and returns the JSX codes as interpreted accordingly. However it performs this just at the beginning once, but we need to make React re-evaluate some parts of components based on events such as clicking etc. Here comes the **State** structure.  
@@ -65,8 +65,8 @@ const titleChangeHandler = (event) => {
   setEnteredTitle(event.target.value)
 }
 const amountChangeHandler = (event) => {
-    setEnteredAmount(event.target.value)
-  }
+  setEnteredAmount(event.target.value)
+}
 ```
 > *When we are getting user input, it always comes as **string** that's why we initialize **state** with an empty string up above. Also beware that we can have multiple states per component and they won't be effecting each other.*
 
@@ -86,7 +86,7 @@ const titleChangeHandler = (event) => {
   })
 }
 ```
-> *Please note that, the more common way is to use **single state**!*
+> *Please note that, the more common way is to use **multiple states**!*
 
 ## Updating State That Depends on the Previous State
 In following cases we need to use the implementation down below to safely depend on the previous state. Here we should pass in an arrow function to our **setting function** and `prevState` *-as an argument to this inner arrow funciton-* ensures us to safely refer to the previous state.
@@ -126,3 +126,6 @@ const submitHandler = (event) => {
 Two-way binding simply means that, for inputs we don't just listen to changes but we can also pass a new value to the input so that we can reset or change the input. To do so *i.e.*:
 1. We add `value={enteredTitle}` to the **input element**
 2. We add `setEnteredTitle('')` to the **submitHandler**.
+
+## Child-to-Parent Component Communication
+During the communication we are not allowed to skip components in between. We need to follow the order and pass the data through each of them in order.
