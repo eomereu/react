@@ -24,10 +24,14 @@ const App = () => {
       date: new Date(2021, 5, 12),
     }
   ];
+  const createExpenseHandler = (expenseData) => {
+    // expenses.push(expenseData);
+    console.log(expenseData);
+  };
 
   return (
     <div>
-      <NewExpense />
+      <NewExpense onCreateExpense={createExpenseHandler} />
       <Expenses expenses={expenses} currency={currency} />
     </div>
   );

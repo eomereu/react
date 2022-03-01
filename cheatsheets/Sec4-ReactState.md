@@ -127,5 +127,28 @@ Two-way binding simply means that, for inputs we don't just listen to changes bu
 1. We add `value={enteredTitle}` to the **input element**
 2. We add `setEnteredTitle('')` to the **submitHandler**.
 
-## Child-to-Parent Component Communication
-During the communication we are not allowed to skip components in between. We need to follow the order and pass the data through each of them in order.
+## Child-to-Parent Component Communication 
+During the communication we are not allowed to skip the components in between. We need to follow the order and pass the data through each of them in order. We will be adding **new props** to our components to be able to communicate:
+```javascript
+// NewExpense.js - Parent
+const saveExpenseDataHandler = (enteredExpenseData) => {
+    const expenseData = {
+      ...enteredExpenseData,
+      id: Math.random().toString()
+    };
+    props.onCreateExpense(expenseData); // this is also a parent comp. func.
+  }
+...
+<ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
+```
+> *At the end of the day since this new prop should have a function as a value, a good naming convention is to start it with **on** i.e. **onSaveExpenseData**...*
+
+Now we can access the new prop inside our *(child)* component. To access we need to use `props` as argument to the component function,
+```javascript
+// ExpenseForm.js - Child
+const ExpenseForm = (props) => {
+  ...
+  props.onSaveExpenseData(expenseData);
+}
+```
+So actually the thing we do is to pass a pointer for the function we defined into the child component. Then **we execute this function in the child component not in the component that we defined it**. We are eligible to do this since we have already passed a **pointer** to the **function we created** on the **new prop** we defined.
