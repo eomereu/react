@@ -152,3 +152,6 @@ const ExpenseForm = (props) => {
 }
 ```
 So actually the thing we do is to pass a pointer for the function we defined into the child component. Then **we execute this function in the child component not in the component that we defined it**. We are eligible to do this since we have already passed a **pointer** to the **function we created** on the **new prop** we defined.
+
+## Lifting the State Up
+[**Lifting the state up**](https://i.ibb.co/7JQ4J0n/Fire-Shot-Capture-011-React-The-Complete-Guide-incl-Hooks-React-Router-Redux-Udemy-www-udemy-com.png) means moving data from a child component to some parent component to either use it there or to pass it down to some other child component. Since we doesn't have direct connection between sibling components we need this concept to pass the data where it's needed. Also the goal is to lift up the state/data just as high as necessary until we have a component which has both access to the components that generate data as well as the component that needs data.
