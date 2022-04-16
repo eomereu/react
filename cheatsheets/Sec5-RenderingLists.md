@@ -25,3 +25,26 @@ const createExpenseHandler = (expenseData) => {
   })
 };
 ```
+
+## Understanding "Keys"
+Whenever we add an ExpenseItem onto our page, React does the following, **unless we tell React where to add element in a correct way** *(or it seems the elements as similar objects)*:
+1. Adds a new `div` at the end of the divs
+1. Walks through all elements and updates their content ***since we wanted it to add in front of the list, indeed***  
+
+There are handicaps of this behavior:
+- There may be problem with performance since it's going through **all** the elements in our array
+- More importantly it may lead to bugs:
+  - *i.e.* if some states were handled within our ExpenseItems then it was going to disappear through this walkthrough
+
+So the way to tell React where to put new elements is to add `key` prop. It can be added to any component. By doing so will help React to identify individual items. Of course we need to give `key` prop a **unique** feature like *id*, which typically comes from databases as unique as expected.
+```javascript
+{props.expenses.map((expense) => (
+  <ExpenseItem
+    key={expense.id}
+    title={expense.title}
+    amount={expense.amount}
+    date={expense.date}
+    currency={props.currency}
+  />
+))}
+```
