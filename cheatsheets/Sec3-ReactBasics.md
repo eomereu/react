@@ -163,7 +163,7 @@ return (
 
 In order to transform **date** into more human readable format, we can use following JavaScript functions:
   - [`.toLocaleString('language', { key: 'value'})`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString#using_tolocalestring) : Gives us month or day (as we specify) in a human readable format.
-  - [`.getFullYear()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getFullYear#using_getfullyear) : Returns us the year in 4 digits.
+  - [`.getFullYear()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getFullYear#using_getfullyear) : Returns us the year in 4 digits as number not string
   - In example:
     ```javascript
     const myDate = new Date(25, 8, 2021)
