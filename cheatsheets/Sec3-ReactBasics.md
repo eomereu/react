@@ -78,6 +78,11 @@ npm start
   So thanks to **JSX** our components are much easier to implement and read.
   > *PS: Also we can understand from the above code that why we need a single element around the inner elements (which is 'div' in our case). Because we may return only one thing, and that's what JSX doing; turning our HTML-like code into the code above and then to more browser friendly code behind the scenes.*
 
+- We can store JSX code into the variables:
+  ```javascript
+  let expensesContent = <p>No expenses found.</p>;
+  ```
+
 ## Inside `index.js`
 Basically to import react:
 ```javascript

@@ -48,3 +48,69 @@ So the way to tell React where to put new elements is to add `key` prop. It can 
   />
 ))}
 ```
+
+## Outputting Conditional Content
+We have a couple of options in terms of outputting the content based on conditons:
+1. Using a ternary operator ***(more compact way)***
+    ```javascript
+    return (
+      <Card className="expenses">
+        <ExpensesFilter selected={filteredYear} onFilter={onFilterHandler} />
+        {filteredExpenses.length === 0 ? (
+          <p>No expenses found.</p>
+          ) : (
+            filteredExpenses.map((expense) => (
+              <ExpenseItem
+                key={expense.id}
+                title={expense.title}
+                amount={expense.amount}
+                date={expense.date}
+                currency={props.currency}
+              />
+          ))
+        )}
+      </Card>
+    );
+    ```
+2. Abusing the `&&` operator ***(more straightforward way)***
+    ```javascript
+    return (
+      <Card className="expenses">
+        <ExpensesFilter selected={filteredYear} onFilter={onFilterHandler} />
+        {filteredExpenses.length === 0 && <p>No expenses found.</p> }
+        {filteredExpenses.length > 0 && 
+          filteredExpenses.map((expense) => (
+            <ExpenseItem
+              key={expense.id}
+              title={expense.title}
+              amount={expense.amount}
+              date={expense.date}
+              currency={props.currency}
+            />
+          ))}
+      </Card>
+    );
+    ```
+3. Using the condition before hand, along with assigning JSX code to variables ***(more efficient and clean way)***
+    ```javascript
+    let expensesContent = <p>No expenses found.</p>;
+
+    if (filteredExpenses.length > 0) {
+      expensesContent = filteredExpenses.map((expense) => (
+        <ExpenseItem
+          key={expense.id}
+          title={expense.title}
+          amount={expense.amount}
+          date={expense.date}
+          currency={props.currency}
+        />
+      ));
+    }
+
+    return (
+      <Card className="expenses">
+        <ExpensesFilter selected={filteredYear} onFilter={onFilterHandler} />
+        {expensesContent}
+      </Card>
+    );
+    ```
