@@ -20,6 +20,7 @@
   display: inline-block;
   font: inherit;
   padding: 12px 30px;
+  margin-left: 1rem;
   text-align: center;
   text-decoration: none;
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25);
