@@ -160,3 +160,9 @@ return show ? (
   </>
 );
 ```
+
+## Adding Dynamic Styles
+If we are adding a dynamic **style** to an element we need to wrap it around double curly braces. The outer ones are actually to render the dynamic value. The inner ones are for giving a dynamic object. At this point if we are to set/handle a CSS property which has a dash inside of it, we can simply reflect it in camel case:
+```javascript
+<div className="chart-bar__fill" style={{height: barHeightFill, backgroundColor: 'red'}}></div> //CSS atr. names are: "height" and "background-color"
+```
