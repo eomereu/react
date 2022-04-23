@@ -138,3 +138,25 @@ const ExpensesList = (props) => {
   }
 };
 ```
+
+## *A Practical Way to Hide/Show Components*
+```javascript
+const [show, hide] = useState(true);
+
+const onShowHandler = (_) => {
+  hide(false);
+};
+
+const onHideHandler = (_) => {
+  hide(true);
+};
+
+return show ? (
+  <button onClick={onShowHandler}>Show Content</button>
+) : (
+  <>
+    <p>Some Content.</p>
+    <button onClick={onHideHandler}>Hide Content</button>
+  </>
+);
+```
