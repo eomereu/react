@@ -114,3 +114,27 @@ We have a couple of options in terms of outputting the content based on conditon
       </Card>
     );
     ```
+
+## Adding Conditional Return Statements
+We can return JSX content based on if statements, but if the content we are going to return is the whole content of that file.
+```javascript
+const ExpensesList = (props) => {
+  if (props.expenses.length === 0) {
+    return <h3 className="expenses-list__fallback">No expenses found.</h3>;
+  } else if (props.expenses.length > 0) {
+    return (
+      <ul className='expenses-list'>
+        {props.expenses.map((expense) => (
+          <ExpenseItem
+            key={expense.id}
+            title={expense.title}
+            amount={expense.amount}
+            date={expense.date}
+            currency={props.currency}
+          />
+        ))}
+      </ul>
+    );
+  }
+};
+```
