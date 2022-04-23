@@ -38,7 +38,7 @@ const ExpenseForm = (props) => {
 
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
 
@@ -50,7 +50,7 @@ const ExpenseForm = (props) => {
   };
 
   return show ? (
-    <button onClick={onAddHandler}>Add New Expense</button>
+    <button id="add-expense-button" onClick={onAddHandler}>Add New Expense</button>
   ) : (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">

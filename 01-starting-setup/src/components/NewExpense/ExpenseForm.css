@@ -25,3 +25,7 @@
 .new-expense__actions {
   text-align: right;
 }
+
+#add-expense-button {
+  margin-left: 0;
+}

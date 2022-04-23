@@ -83,6 +83,13 @@ npm start
   let expensesContent = <p>No expenses found.</p>;
   ```
 
+- `Math.max()` takes number arguments, not even an array of numbers. So we can give an array of numbers to it with spread operator:
+  ```javascript
+  const people = [{ name:"John", age:32 }, {name:"Joe", age: 25 }]
+  const ages = people.map((person) => person.age)
+  const maxOfa = Math.max(...ages)
+  ```
+
 ## Inside `index.js`
 Basically to import react:
 ```javascript
