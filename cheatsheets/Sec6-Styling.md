@@ -61,3 +61,9 @@ from ***MyComponent.css*** to ***MyComponent.module.css***
     <button type={props.type} className={classes.button} onClick={props.onClick}>
     ```
 > *It changes the classnames so that it can be unique!*
+
+An example usage of dynamic styles with CSS Modules:
+```bash
+<div className={`${classes["form-control"]} ${!isValid && classes.invalid}`}></div>
+```
+> *Beware that if the class name contains a symbol like dash we can refer it within quotes within brackets!*
