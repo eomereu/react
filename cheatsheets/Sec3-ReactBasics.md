@@ -90,6 +90,18 @@ npm start
   const maxOfa = Math.max(...ages)
   ```
 
+- `.trim()` gets rid of preceeding and succeeding blank chars
+
+- Following implementation *(using of `return;` statement)* may be useful for the scenarios that we want to cut the function execution at some point
+  ```javascript
+  const formSubmitHandler = () => {
+    if (enteredValue.trim().length === 0) {
+      return;
+    }
+    props.onAddGoal(enteredValue);
+  };
+  ```
+
 ## Inside `index.js`
 Basically to import react:
 ```javascript
