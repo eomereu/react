@@ -43,3 +43,21 @@ CSS file
   color: red;
 }
 ```
+
+## Styled-Components
+Skipped since did not like it. For further information: https://styled-components.com/
+
+## Using CSS Modules
+As we know, our default CSS modules have a golabal scope and it may effect any component which shares the same class name in another module. To prevent this we can localize our CSS files by using *CSS Modules*. [CSS Modules](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet/) is a feature which is only available in projects that are configured to support it. The apps we create by `npx create-react-app my-app` support it.  
+To use *CSS Modules* we need to
+1. Rename the files  
+from ***MyComponent.css*** to ***MyComponent.module.css***
+1. Import differently
+    ```javascript
+    import classes from './Button.module.css';
+    ```
+1. Pass our classes to our component
+    ```html
+    <button type={props.type} className={classes.button} onClick={props.onClick}>
+    ```
+> *It changes the classnames so that it can be unique!*
