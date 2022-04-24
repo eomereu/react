@@ -31,3 +31,15 @@ return (
   </form>
 );
 ```
+
+## Setting CSS Classes Dynamically
+Our second and the better choice for the scenario above is, changing the classes dynamically. For this we can make use of *template literals* in JavaScript which are defined between backticks ` `` `. They're capable of containing dynamic values inside within a `$()` expression.
+```javascript
+<div className={`form-control ${isValid ? "" : "invalid"}`}>
+```
+CSS file
+```css
+.form-control.invalid label {
+  color: red;
+}
+```

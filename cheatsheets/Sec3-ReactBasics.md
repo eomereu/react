@@ -102,6 +102,11 @@ npm start
   };
   ```
 
+- These backticks ` `` ` are a standart JavaScript functionality. What they're defining is called as **template literal** and they're kind of a special string which may have dynamic values within `$()` inside:
+  ```javascript
+  <div className={`form-control ${isValid ? "" : "invalid"}`}>
+  ```
+
 ## Inside `index.js`
 Basically to import react:
 ```javascript
