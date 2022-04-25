@@ -67,3 +67,13 @@ An example usage of dynamic styles with CSS Modules:
 <div className={`${classes["form-control"]} ${!isValid && classes.invalid}`}></div>
 ```
 > *Beware that if the class name contains a symbol like dash we can refer it within quotes within brackets!*
+
+## Debugging React Apps
+We can debug react apps on the browser by  
+1. **F12**
+1. **Sources**
+1. *FileToDebug*
+1. *Click lines to set breakpoints*
+1. *Perform action on website*
+1. ***DEBUG!***
+> *See https://ibb.co/4gkGdGH*
