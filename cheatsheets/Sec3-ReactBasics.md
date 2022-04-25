@@ -107,6 +107,8 @@ npm start
   <div className={`form-control ${isValid ? "" : "invalid"}`}>
   ```
 
+- The `for` attribute for `label` components are implemented as `htmlFor` in JSX syntax.
+
 ## Inside `index.js`
 Basically to import react:
 ```javascript
