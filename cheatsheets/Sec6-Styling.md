@@ -77,3 +77,7 @@ We can debug react apps on the browser by
 1. *Perform action on website*
 1. ***DEBUG!***
 > *See https://ibb.co/4gkGdGH*
+
+## Using the React DevTools
+We may use an advanced chrome extension called [**React Developer Tools**](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi/related?hl=en) to have a better view on our React projects. For example, in *F12* tab, we can see the newly added ***Components*** tab. If we click on that, we can observe our component tree. By clickin on any component we can see more detailed information about it, hooks of it and so on. Furthermore we can manipulate that component by playing around the values in that tab.
+> *See https://ibb.co/1n5rf4W*
