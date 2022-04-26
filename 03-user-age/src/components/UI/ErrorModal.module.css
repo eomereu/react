@@ -29,6 +29,7 @@
 
 .content {
   padding: 1rem;
+  white-space: pre-line;
 }
 
 .actions {

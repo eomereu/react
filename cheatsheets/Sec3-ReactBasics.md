@@ -114,6 +114,11 @@ npm start
   if (+age < 1){}
   ```
 
+- Adding the following style for the paragraph in a CSS module, will break line on `\n`
+  ```css
+  white-space: pre-line;
+  ```
+
 ## Inside `index.js`
 Basically to import react:
 ```javascript
