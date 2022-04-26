@@ -5,6 +5,11 @@
   max-width: 40rem;
 }
 
+.input h2 {
+  margin-top: 0;
+  text-align: center;
+}
+
 .input label {
   display: block;
   font-weight: bold;
@@ -23,4 +28,9 @@
 .input input:focus {
   outline: none;
   border-color: #4f005f;
+}
+
+.button-area {
+  display: flex;
+  justify-content: flex-end;
 }

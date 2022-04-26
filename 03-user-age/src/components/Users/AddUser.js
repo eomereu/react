@@ -7,9 +7,7 @@ import { useState } from "react";
 const AddUser = (props) => {
   const [username, setUsername] = useState("");
   const [age, setAge] = useState("");
-  const [show, setShow] = useState(false);
-  const [errorTitle, setErrorTitle] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [error, setError] = useState();
 
   const usernameInputHandler = (event) => {
     setUsername(event.target.value);
@@ -21,10 +19,12 @@ const AddUser = (props) => {
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    if (username.trim().length === 0 || age.trim().length === 0 || +age < 9) {
-      setErrorTitle("Invalid Input!")
-      setErrorMessage("Input preconditions are as following:\n - Username or Age fields cannot be empty.\n - Person cannot be younger than 9 years old.")
-      setShow(true);
+    if (username.trim().length === 0 || age.trim().length === 0 || +age < 18) {
+      setError({
+        title: "Invalid Input!",
+        message:
+          "Input preconditions are as following:\n - Username or Age fields cannot be empty.\n - Person cannot be younger than 18 years old.",
+      });
       return;
     }
     props.addUserHandler({
@@ -37,22 +37,41 @@ const AddUser = (props) => {
   };
 
   const onOkayHandler = () => {
-    setShow(false)
-  }
+    setError(null);
+  };
 
   return (
     <>
-    {show && <ErrorModal title={errorTitle} message={errorMessage} onOkay={onOkayHandler} />}
-    <Card className={classes.input}>
-      <form onSubmit={onSubmitHandler}>
-        <label htmlFor="username">Username</label>
-        <input id="username" type="text" onChange={usernameInputHandler} value={username} />
-        <label htmlFor="age">Age (Years)</label>
-        <input id="age" type="number" onChange={ageInputHandler} value={age} />
-        <label htmlFor=""></label>
-        <Button type="submit">Add User</Button>
-      </form>
-    </Card>
+      {error && (
+        <ErrorModal
+          title={error.title}
+          message={error.message}
+          onOkay={onOkayHandler}
+        />
+      )}
+      <Card className={classes.input}>
+        <h2>Party Attendee Form</h2>
+        <form onSubmit={onSubmitHandler}>
+          <label htmlFor="username">Username</label>
+          <input
+            id="username"
+            type="text"
+            onChange={usernameInputHandler}
+            value={username}
+          />
+          <label htmlFor="age">Age (Years)</label>
+          <input
+            id="age"
+            type="number"
+            onChange={ageInputHandler}
+            value={age}
+          />
+          <label htmlFor=""></label>
+          <div className={classes["button-area"]}>
+            <Button type="submit">Add User</Button>
+          </div>
+        </form>
+      </Card>
     </>
   );
 };

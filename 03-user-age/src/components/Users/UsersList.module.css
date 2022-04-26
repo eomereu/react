@@ -5,13 +5,22 @@
   background: white;
 }
 
+.users h2 {
+  width: auto;
+  padding: 1rem;
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
 .users ul {
   list-style: none;
-  padding: 1rem;
+  padding-inline-start: 0;
+  padding-bottom: 1rem;
+  margin-top: 0;
 }
 
 .users li {
   border: 1px solid #ccc;
-  margin: 0.5rem 0;
+  margin: 0.5rem;
   padding: 0.5rem;
 }
