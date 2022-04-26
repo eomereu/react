@@ -1,6 +1,6 @@
-import classes from "./AddUser.module.css";
-import Button from "../UI/Button";
 import Card from "../UI/Card";
+import Button from "../UI/Button";
+import classes from "./AddUser.module.css";
 
 const AddUser = (props) => {
   const addUserHandler = (event) => {
