@@ -1,0 +1,16 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 5rem auto;
+  padding: 2rem;
+  border: 1rem;
+  border-radius: 10px;
+  box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.25);
+  background: #ffffff;
+}
+
+.add-user form {
+  display: flex;
+  flex-direction: column;
+}
