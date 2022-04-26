@@ -18,16 +18,17 @@ const AddUser = (props) => {
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    if (username.length > 0 && age > 0) {
-      setValid(true);
-      props.addUserHandler({
-        id: Math.floor(Math.random() * 100).toString(),
-        username: username,
-        age: age,
-      });
-      setUsername("");
-      setAge("");
+    if (username.trim().length === 0 || age.trim().length === 0 || +age < 1) {
+      return;
     }
+    setValid(true);
+    props.addUserHandler({
+      id: Math.floor(Math.random() * 100),
+      username: username,
+      age: age,
+    });
+    setUsername("");
+    setAge("");
   };
 
   return (

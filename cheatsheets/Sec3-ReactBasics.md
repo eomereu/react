@@ -109,6 +109,11 @@ npm start
 
 - The `for` attribute for `label` components are implemented as `htmlFor` in JSX syntax.
 
+- When to compare a number input field value with a number (for example in an if statement), adding a plus sign in front of the vlaue name is way more safer:
+  ```javascript
+  if (+age < 1){}
+  ```
+
 ## Inside `index.js`
 Basically to import react:
 ```javascript
