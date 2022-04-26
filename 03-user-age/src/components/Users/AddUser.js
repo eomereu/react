@@ -21,7 +21,7 @@ const AddUser = (props) => {
     if (username.length > 0 && age > 0) {
       setValid(true);
       props.addUserHandler({
-        id: Math.floor(Math.random() * 100),
+        id: Math.floor(Math.random() * 100).toString(),
         username: username,
         age: age,
       });
