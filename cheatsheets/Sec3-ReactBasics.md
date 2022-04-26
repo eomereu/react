@@ -119,6 +119,16 @@ npm start
   white-space: pre-line;
   ```
 
+- **React Fragment** is simply a component that returns *props.children* only. It's kind of a simple wrapper. It fulfills the requirement of returning exactly one JSX element. It does this by avoiding unnecessary compiled hundreds of divs one in another.  
+  - The original way of it:
+    ```javascript
+    return <React.Fragment></React.Fragment>
+    ```
+  - The shortcut of it:
+    ```javascript
+    return <></>
+    ```
+
 ## Inside `index.js`
 Basically to import react:
 ```javascript
