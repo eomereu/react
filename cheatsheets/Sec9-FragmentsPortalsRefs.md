@@ -38,3 +38,35 @@ const ErrorModal = (props) => {
 };
 ```
 > *Beware that `ReactDOM.createPortal()` is used within curly braces!*
+
+## Refs
+**Refs** are mainly used on *input* elements in order to get the input value *(and maybe then resetting it-however this is like a naughty action since we'd better not manipulate DOM elements on our own but let React manipulate them. However in this case, it prevents us to catch every key stroke unnecessarily)*. Actually **refs** are like **states** but with less code. They are one of *react hooks*.  
+
+To import
+```javascript
+// source file: 03-user-age/src/components/Users/AddUser.js
+import { useRef } from 'react',
+```
+After that we can initialize it within our component function by
+```javascript
+const AddUser = (props) => {
+  const nameInputRef = useRef();
+  ...
+```
+Literally, each *Ref* has a `current` property which holds the DOM element itself that we assigned it to. Within that current property we have `value` property which holds the value of the DOM element *(i.e. the user input for `input` elements)*. So we can make use of it. Nevertheless, as stated above resetting it may be a little bit naughty *(but practical)*.
+```javascript
+  const onSubmitHandler = (event) => {
+    const username = nameInputRef.current.value;
+    ...
+    nameInputRef.current.value = '';
+```
+Finally adding it to the desired component is done by `ref` property on the component
+```javascript
+  return (
+    <>
+      <input id="username" type="text" ref={nameInputRef} />
+    ...
+```
+> *Refs have less code and if we just want to read a value, quickly, they are very useful.*
+
+> *Beware that **input** elements we modify by **ref** are **uncontrolled** elements since React doesn't modify/handle them indeed. However the ones we modify by **state** are **controlled** elements since we feed the value with every key stroke back into the component and React handles this. In other words, their **internal state** is controlled by React.*
