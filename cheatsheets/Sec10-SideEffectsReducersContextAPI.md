@@ -59,3 +59,8 @@ When we use dependencies, simply we just type in there, the variables we used/wa
 ```
 Instead of checking if the form is valid or not in two functions *(username input keystroke inspector and password input keystroke inpector)* we were just simply able to check it in just one place and getting rid of extra code.
 > *Beware that `setFormIsValid()` is a state and the reason we did not add it into dependencies is React ensures that useState() setters (the second variables) are fixed and not changed during component loop.*
+
+In a nutshell we have to add **all** things we use within useEffect() function, **except for**:
+- State updating functions
+- "Built-in" APIs or functions
+- Variables or functions that are defined *outside* of our components
