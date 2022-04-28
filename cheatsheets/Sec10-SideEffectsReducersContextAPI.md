@@ -57,10 +57,41 @@ When we use dependencies, simply we just type in there, the variables we used/wa
     );
   }, [enteredEmail, enteredPassword]);
 ```
-Instead of checking if the form is valid or not in two functions *(username input keystroke inspector and password input keystroke inpector)* we were just simply able to check it in just one place and getting rid of extra code.
+Instead of checking if the form is valid or not in two functions *(email input keystroke inspector and password input keystroke inpector)* we were just simply able to check it in just one place and getting rid of extra code.
 > *Beware that `setFormIsValid()` is a state and the reason we did not add it into dependencies is React ensures that useState() setters (the second variables) are fixed and not changed during component loop.*
 
 In a nutshell we have to add **all** things we use within useEffect() function, **except for**:
 - State updating functions
 - "Built-in" APIs or functions
 - Variables or functions that are defined *outside* of our components
+
+## useEffect Cleanup Function
+Indeed we don't want to check the validity right away on every key stroke. Because in real-world scenarios we will be sending HTTP requests to our backend server to validate those emails and passwords. So it'd be so ridiculous to send these requests at each key stroke. At this point **useEffect Cleanup Function** comes into play.
+```javascript
+  useEffect(() => {
+    const identifier = setTimeout(
+      setFormIsValid(
+        enteredEmail.includes("@") && enteredPassword.trim().length > 6
+      ),
+      500
+    );
+    return () => {
+      clearTimeout(identifier);
+    };
+  }, [enteredEmail, enteredPassword]);
+```
+- `setTimeout(() => {}, miliseconds)`: Waits for *miliseconds* to execute the given function *(arrow or defined)*
+- `clearTimeout(varToSetTimeout)`: Resets the timer count on the variable *(to which a setTimeout() function is assigned)*
+
+So here we manage to check the validity not every key stroke but after a 500 ms pause, which makes sense to send the HTTP request just when we think user might end up writing the email or password.  
+
+Here the function within our return, is **not** executed on the first load/refresh of the page. But after that initial load/refresh, it's being executed **just before** the execution of our useEffect function.  
+
+At startup/refresh:
+1. Our overall useEffect() is trigerred
+1. useEffect() function *(Above function)* is executed
+
+On each keystroke:
+1. Our overall useEffect() is trigerred
+1. Return function *(Cleanup function)* is executed
+1. useEffect() function *(Above function)* is executed
