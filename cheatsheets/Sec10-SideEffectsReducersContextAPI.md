@@ -15,3 +15,35 @@ useEffect( () => {...}, [ dependencies ] )
 2. An array of dependencies  
 ***So our dependencies to check for executing our side effect code, go into this array.***
 > *See https://ibb.co/9q64WZ1*
+
+## Using the useEffect() Hook
+A basic and effective scenario to use useEffect() could be the case, when we log in and refresh the page we want user to stay logged in. However keeping logged in info only in a state won't help us because everything will be re-evaluated and it will be lost on refresh. So we want to make use of `useEffect()` here.
+```javascript
+// source file: 04-login-panel/src/components/App.js
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const loggedInInfo = localStorage.getItem("LOGGED_IN");
+
+    if (loggedInInfo === "1") {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const loginHandler = (email, password) => {
+    setIsLoggedIn(true);
+    localStorage.setItem("LOGGED_IN", "1");
+  };
+  
+  const logoutHandler = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem("LOGGED_IN");
+  };
+```
+Explanations of some functions above:
+- `localStorage.getItem(key)`: Takes a string and retrieves that variable from local variables (cookies)
+- `localStorage.steItem(key, value)`: Takes two strings and sets *key* with *value* as a variable in local variables
+- `localStorage.removeItem(key)`: Takes a string and removes that variable from local variables
+> ***PS:** These local variables can be observed via **F12 -> Application -> Storage -> Local Storage -> http://localhost:3000***
+
+By using useEffect() above, and with no dependencies given, we make sure that, it's executed just once, on startup and on refresh, since we went from no dependencies at all to no dependencies. By this way we prevent our state to get lost. Also on another actions, and hence re-evaluation of components, it's not executed since no dependencies changed, and we prevent an infinite loop.
