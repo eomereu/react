@@ -16,7 +16,7 @@ useEffect( () => {...}, [ dependencies ] )
 ***So our dependencies to check for executing our side effect code, go into this array.***
 > *See https://ibb.co/9q64WZ1*
 
-## Using the useEffect() Hook
+## Using the `useEffect()` Hook
 A basic and effective scenario to use useEffect() could be the case, when we log in and refresh the page we want user to stay logged in. However keeping logged in info only in a state won't help us because everything will be re-evaluated and it will be lost on refresh. So we want to make use of `useEffect()` here.
 ```javascript
 // source file: 04-login-panel/src/components/App.js
@@ -47,3 +47,15 @@ Explanations of some functions above:
 > ***PS:** These local variables can be observed via **F12 -> Application -> Storage -> Local Storage -> http://localhost:3000***
 
 By using useEffect() above, and with no dependencies given, we make sure that, it's executed just once, on startup and on refresh, since we went from no dependencies at all to no dependencies. By this way we prevent our state to get lost. Also on another actions, and hence re-evaluation of components, it's not executed since no dependencies changed, and we prevent an infinite loop.
+
+## useEffect & Dependencies
+When we use dependencies, simply we just type in there, the variables we used/want to inspect in/for our function to be executed. Using it with dependencies is simply like onChange(dependencies)... An example usage:
+```javascript
+  useEffect(() => {
+    setFormIsValid(
+      enteredEmail.includes("@") && enteredPassword.trim().length > 6
+    );
+  }, [enteredEmail, enteredPassword]);
+```
+Instead of checking if the form is valid or not in two functions *(username input keystroke inspector and password input keystroke inpector)* we were just simply able to check it in just one place and getting rid of extra code.
+> *Beware that `setFormIsValid()` is a state and the reason we did not add it into dependencies is React ensures that useState() setters (the second variables) are fixed and not changed during component loop.*
