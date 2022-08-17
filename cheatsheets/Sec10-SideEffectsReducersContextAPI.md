@@ -10,7 +10,7 @@ useEffect hook is called with two parameters
 ```javascript
 useEffect( () => {...}, [ dependencies ] )
 ```
-1. A function that should be executed **after** every component evaluation **if** the specified dependencies *(the second argument)* is changed.  
+1. A function that should be executed **after** every render cycle *(component re-evaluation)* **if** the specified dependencies *(the second argument)* is changed.  
 ***So our side effect code goes into this function!***
 2. An array of dependencies  
 ***So our dependencies to check for executing our side effect code, go into this array.***
@@ -58,9 +58,9 @@ When we use dependencies, simply we just type in there, the variables we used/wa
   }, [enteredEmail, enteredPassword]);
 ```
 Instead of checking if the form is valid or not in two functions *(email input keystroke inspector and password input keystroke inpector)* we were just simply able to check it in just one place and getting rid of extra code.
-> *Beware that `setFormIsValid()` is a state and the reason we did not add it into dependencies is React ensures that useState() setters (the second variables) are fixed and not changed during component loop.*
+> *Beware that `setFormIsValid()` is a state and the reason we did not add it into dependencies is React ensures that useState() setters (the second variables) are fixed and not changed during render cycle.*
 
-In a nutshell we have to add **all** things we use within useEffect() function, **except for**:
+In a nutshell we have to add ***(kinda)* all** things we use within useEffect() function, **except for**:
 - State updating functions
 - "Built-in" APIs or functions
 - Variables or functions that are defined *outside* of our components
