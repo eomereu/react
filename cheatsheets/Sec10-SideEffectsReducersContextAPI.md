@@ -183,3 +183,27 @@ const Login = (props) => {
         </div>
         ...
 ```
+
+## React Context API
+Component wide "behind-the-scenes" State Storage... It enables us to avoid long and tiring props chainings.
+> *`.Consumer` part is skipped within this Cheatsheet*
+They are stored generally in `/src/store/` directory.  
+*i.e. Authentication Context*
+```javascript
+import React from 'react';
+
+const AuthContext = React.createContext({
+  isLoggedIn: false
+});
+
+export default AuthContext;
+```
+In order to be able to use it, we should wrap our content in it by calling `.Provider` on it.
+```javascript
+return (
+  <AuthContext.Provider>
+    ...
+  </AuthContext.Provider>
+);
+```
+By doing so, we have acc
