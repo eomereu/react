@@ -129,6 +129,12 @@ npm start
     return <></>
     ```
 
+- Refer to *https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions* for Regular Expressions.
+  ```javascript
+  // email validator RegEx:
+  /\w+@\w+(\.\w)+/.test(action.value)
+  ```
+
 ## Inside `index.js`
 Basically to import react:
 ```javascript

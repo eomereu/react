@@ -95,3 +95,91 @@ On each keystroke:
 1. Our overall useEffect() is trigerred
 1. Return function *(Cleanup function)* is executed
 1. useEffect() function *(Above function)* is executed
+
+## `useReducer()` Hook
+If you are to update a state which depends on another state then **useReducer** could be a perfect choice. For other use purposes and advantages, please refer to *https://dev.to/spukas/3-reasons-to-usereducer-over-usestate-43ad*  
+Please also refer to the following screenshots for a better understanding:
+- *https://ibb.co/TMWwdzM*
+- *https://ibb.co/8zqw7wn*
+
+Structure:
+```javascript
+const [state, dispatch] = React.useReducer(reducerFn, initialState, initFn);
+```
+
+It is a perfect choice for a **state toggle** indeed. *i.e. *Dark/Light Theme*
+```javascript
+const [value, toggleValue] = React.useReducer(previous => !previous, true)
+
+<button onClick={toggleValue}>Toggle</button>
+```
+
+For a perfect counter:
+```javascript
+function reducer(state, action) {
+  switch (action.type) {
+    case 'ADD': return { count: state.count + 1 };
+    case 'SUB': return { count: state.count - 1 };
+    default: return state;
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = React.useReducer(reducer, { count: 0 });
+  return (
+    <>
+      Count: {state.count}
+      <button onClick={() => dispatch({type: 'ADD'})}>Add</button>
+      <button onClick={() => dispatch({type: 'SUB'})}>Substract</button>
+    </>
+  );
+}
+```
+
+Example Usage:
+```javascript
+const emailReducer = (state, action) => {
+  switch(action.type) {
+    case 'USER_INPUT':
+      return { value: action.value, isValid: /\w+@\w+(\.\w)+/.test(action.value) };
+    case 'INPUT_BLUR':
+      return { value: state.value, isValid: /\w+@\w+(\.\w)+/.test(state.value) };
+    default:
+      return { value:'', isValid: false };
+  }
+}
+...
+const Login = (props) => {
+  const [emailState, dispatchEmail] = useReducer(emailReducer, {
+    value: '',
+    isValid: null,
+  })
+  ...
+  const emailChangeHandler = (event) => {
+    dispatchEmail({type: 'USER_INPUT', value: event.target.value})
+  };
+  ...
+  const validateEmailHandler = () => {
+    dispatchEmail({type: 'INPUT_BLUR'})
+  };
+  ...
+  return (
+    ...
+    <Card className={classes.login}>
+      <form onSubmit={submitHandler}>
+        <div
+          className={`${classes.control} ${
+            emailState.isValid === false ? classes.invalid : ""
+          }`}
+        >
+          <label htmlFor="email">E-Mail</label>
+          <input
+            type="email"
+            id="email"
+            value={emailState.value}
+            onChange={emailChangeHandler}
+            onBlur={validateEmailHandler}
+          />
+        </div>
+        ...
+```
