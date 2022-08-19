@@ -228,3 +228,14 @@ const Navigation = (props) => {
         )}
         ...
 ```
+We can also pass down functions via Context:
+```javascript
+return (
+  <AuthContext.Provider value={{
+    isLoggedIn: isLoggedIn,
+    onLogout: logoutHandler
+  }}>
+    ...
+  </AuthContext.Provider>
+);
+```
