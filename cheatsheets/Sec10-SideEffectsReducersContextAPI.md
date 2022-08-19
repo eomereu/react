@@ -201,9 +201,30 @@ export default AuthContext;
 In order to be able to use it, we should wrap our content in it by calling `.Provider` on it.
 ```javascript
 return (
-  <AuthContext.Provider>
+  <AuthContext.Provider value={{
+    isLoggedIn: isLoggedIn
+  }}>
     ...
   </AuthContext.Provider>
 );
 ```
-By doing so, we have acc
+> ***`value` property name should be as it is. It mustn't get modified.***
+
+## Using Context API via `useContext()` Hook
+Simply give in the context we are importing and assign the returning content to a variable:
+```javascript
+import AuthContext from '../../store/auth-context';
+
+const Navigation = (props) => {
+  const ctx = useContext(AuthContext);
+
+  return (
+    <nav className={classes.nav}>
+      <ul>
+        {ctx.isLoggedIn && (
+          <li>
+            <a href="/">Users</a>
+          </li>
+        )}
+        ...
+```
