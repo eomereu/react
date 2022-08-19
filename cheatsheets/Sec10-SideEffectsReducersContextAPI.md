@@ -239,3 +239,86 @@ return (
   </AuthContext.Provider>
 );
 ```
+For a better IDE completion, it is a good practice to add the functions we are passing via Context into the Context Object itself:
+```javascript
+...
+const AuthContext = React.createContext({
+  isLoggedIn: false,
+  onLogout: () => {}
+});
+...
+```
+
+## Building & Using a Custom Context Provider Component
+Getting in more advanced topics, it's a better practice to have **authentication** logic in a seperate **context component**:
+```javascript
+import React, { useState, useEffect } from 'react';
+
+const AuthContext = React.createContext({
+  isLoggedIn: false,
+  onLogin: (email, password) => {},
+  onLogout: () => {}
+});
+
+export const AuthContextProvider = (props) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const loggedInInfo = localStorage.getItem("LOGGED_IN");
+
+    if (loggedInInfo === "1") {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  const loginHandler = (email, password) => {
+    setIsLoggedIn(true);
+    localStorage.setItem("LOGGED_IN", "1");
+  };
+  
+  const logoutHandler = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem("LOGGED_IN");
+  };
+
+  return (
+    <AuthContext.Provider value={{
+      isLoggedIn: isLoggedIn,
+      onLogin: loginHandler,
+      onLogout: logoutHandler
+    }}>
+      {props.children}
+    </AuthContext.Provider>
+  )
+}
+
+export default AuthContext;
+```
+By doing so, our *App.js* would be cleaner:
+```javascript
+...
+function App() {
+  const ctx = useContext(AuthContext)
+
+  return (
+    <>
+      <MainHeader />
+      <main>
+        {!ctx.isLoggedIn && <Login />}
+        {ctx.isLoggedIn && <Home />}
+      </main>
+    </>
+  );
+}
+...
+```
+Finally our *index.js* would be shaped as following:
+```javascript
+...
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <AuthContextProvider>
+    <App />
+  </AuthContextProvider>
+);
+```
