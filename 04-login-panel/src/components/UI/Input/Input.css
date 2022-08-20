@@ -1,0 +1,46 @@
+
+.app__input {
+  margin: 1rem 0;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.app__input label,
+.app__input input {
+  display: block;
+}
+
+.app__input label {
+  font-weight: bold;
+  flex: 1;
+  color: #464646;
+  margin-bottom: 0.5rem;
+}
+
+.app__input input {
+  flex: 3;
+  font: inherit;
+  padding: 0.35rem 0.35rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.app__input input:focus {
+  outline: none;
+  border-color: #4f005f;
+  background: #f6dbfc;
+}
+
+.app__input.app__input-invalid input {
+  border-color: red;
+  background: #fbdada;
+}
+
+@media (min-width: 768px) {
+  .app__input {
+    align-items: center;
+    flex-direction: row;
+  }
+
+}
