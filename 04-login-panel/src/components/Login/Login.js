@@ -47,14 +47,18 @@ const Login = () => {
 
   const authCtx = useContext(AuthContext);
 
+  // assigning aliases to the isValid property of email and password state
+  const { isValid: emailIsValid } = emailState; 
+  const { isValid: passwordIsValid } = passwordState; 
+
   useEffect(() => {
     const identifier = setTimeout(() => {
-      setFormIsValid(emailState.isValid && passwordState.isValid);
-    }, 500);
+      setFormIsValid(emailIsValid && passwordIsValid);
+    }, 250);
     return () => {
       clearTimeout(identifier);
     };
-  }, [emailState, passwordState]);
+  }, [emailIsValid, passwordIsValid]);
 
   const emailChangeHandler = (event) => {
     dispatchEmail({ type: "USER_INPUT", value: event.target.value });
@@ -84,7 +88,7 @@ const Login = () => {
           id="email"
           label="E-Mail"
           type="email"
-          isValid={emailState.isValid}
+          isValid={emailIsValid}
           value={emailState.value}
           onChange={emailChangeHandler}
           onBlur={validateEmailHandler}
@@ -93,7 +97,7 @@ const Login = () => {
           id="password"
           label="Password"
           type="password"
-          isValid={passwordState.isValid}
+          isValid={passwordIsValid}
           value={passwordState.value}
           onChange={passwordChangeHandler}
           onBlur={validatePasswordHandler}

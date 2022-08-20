@@ -322,3 +322,8 @@ root.render(
   </AuthContextProvider>
 );
 ```
+
+## `React.forwarRef()` and `useImperativeHandle` Hook
+Normally as known, `ref` is only available on default HTML elements. However if we want to use it on a custom component then we need to use these two pieces-which are mentioned in the header.  
+Please refer to the following course section to review it *https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25599276#notes*  
+Implementation is not referred here.
