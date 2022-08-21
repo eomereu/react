@@ -1,0 +1,34 @@
+.meal_item-meal {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.meal_item-meal h3 {
+  margin: 0 0 0.25rem 0;
+}
+
+.meal_item-title_al_tags {
+  display: flex;
+  flex-direction: row;
+}
+
+.meal_item-al_tags {
+  color: rgb(167, 2, 2);
+  margin: 0.25rem 0 0 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.meal_item-description {
+  font-style: italic;
+}
+
+.meal_item-price {
+  margin-top: 0.25rem;
+  font-weight: bold;
+  color: #ad5502;
+  font-size: 1.25rem;
+}
