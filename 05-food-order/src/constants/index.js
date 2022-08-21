@@ -1,3 +1,4 @@
 import images from './images';
+import DUMMY_MEALS from './dummy_meals';
 
-export { images };
+export { images, DUMMY_MEALS };
