@@ -135,6 +135,16 @@ npm start
   /\w+@\w+(\.\w)+/.test(action.value)
   ```
 
+- Spreading and getting all props:
+  ```javascript
+  <input {...props.input} />
+  ```
+  This will ensure that all key-value pairs will be added here  
+  ex: It will turn into the following
+  ```javascript
+  <input id="xyz" type="text" />
+  ```
+
 ## Inside `index.js`
 Basically to import react:
 ```javascript
