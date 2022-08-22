@@ -2,7 +2,7 @@ import React from "react";
 
 import CartContext from "./cart-context";
 
-const CartProvider = () => {
+const CartProvider = (props) => {
   const addItemToCartHandler = (item) => {};
   const removeItemFromCartHandler = (id) => {};
 

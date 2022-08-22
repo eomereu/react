@@ -152,6 +152,14 @@ npm start
   }, false);
   ```
 
+- `.reduce((currentNumber, item) => {}, starting_value)` is a built in method which is called on an array and turns it into a single value, number in this case. It is used in scenarios like, there is an *items* list and in this list every item is kept based on its id but it also has an *amount* value additionally. We want to get those amount values and return a total number of items...
+  ```javascript
+  const cartItemsCount = cartCtx.items.reduce((curNumber, item) => {
+    return curNumber + item.amount;
+  }, 0);
+  ```
+  > *Refer to following course section for a detailed explanation https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25599488#overview*
+
 ## Inside `index.js`
 Basically to import react:
 ```javascript

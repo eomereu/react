@@ -1,4 +1,4 @@
-import { useState, useReducer } from "react";
+import { useReducer } from "react";
 
 import Cart from "./components/Cart/Cart";
 import Header from "./components/Layout/Header";
