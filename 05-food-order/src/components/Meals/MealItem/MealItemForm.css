@@ -1,20 +1,3 @@
 .meal_item-form {
   text-align: right;
 }
-
-.meal_item-form button {
-  font: inherit;
-  cursor: pointer;
-  background-color: #8a2b06;
-  border: 1px solid #8a2b06;
-  color: white;
-  padding: 0.25rem 2rem;
-  border-radius: 20px;
-  font-weight: bold;
-}
-
-.meal_item-form button:hover,
-.meal_item-form button:active {
-  background-color: #641e03;
-  border-color: #641e03;
-}
