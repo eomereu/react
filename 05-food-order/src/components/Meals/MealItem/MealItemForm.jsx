@@ -4,13 +4,13 @@ import "./MealItemForm.css";
 import Input from "../../UI/Input";
 import Button from "../../UI/Button"
 
-const MealItemForm = () => {
+const MealItemForm = (props) => {
   return (
     <form action="" className="meal_item-form">
       <Input
         label="Amount"
         feat={{
-          id: "amount",
+          id: "amount_" + props.id,
           type: "number",
           min: "1",
           max: "5",
