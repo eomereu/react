@@ -145,6 +145,13 @@ npm start
   <input id="xyz" type="text" />
   ```
 
+- A simple toggle with `useReducer`:
+  ```javascript
+  const [cartActive, dispatchCartActive] = useReducer((state) => {
+    return !state;
+  }, false);
+  ```
+
 ## Inside `index.js`
 Basically to import react:
 ```javascript
