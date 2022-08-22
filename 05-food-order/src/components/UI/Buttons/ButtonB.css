@@ -1,0 +1,25 @@
+._button-b {
+  font: inherit;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #8a2b06;
+  padding: 0.5rem 2rem;
+  border-radius: 25px;
+  margin-left: 1rem;
+}
+
+._button-b:hover,
+._button-b:active {
+  background-color: #5a1a01;
+  border-color: #5a1a01;
+  color: white;
+}
+
+._button-b_alt {
+  color: #8a2b06;
+}
+
+._button-b {
+  background-color: #8a2b06;
+  color: white;
+}

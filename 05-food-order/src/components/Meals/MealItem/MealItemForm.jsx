@@ -2,7 +2,7 @@ import React from "react";
 
 import "./MealItemForm.css";
 import Input from "../../UI/Input";
-import Button from "../../UI/Button"
+import Button from "../../UI/Buttons/Button"
 
 const MealItemForm = (props) => {
   return (

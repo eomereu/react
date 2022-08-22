@@ -4,9 +4,9 @@ import './HeaderCartButton.css'
 
 import CartIcon from '../Cart/CartIcon'
 
-const HeaderCartButton = () => {
+const HeaderCartButton = (props) => {
   return (
-    <button className='hcb__button'>
+    <button onClick={props.onClick} className='hcb__button'>
       <span className='hcb__icon'>
         <CartIcon />
       </span>

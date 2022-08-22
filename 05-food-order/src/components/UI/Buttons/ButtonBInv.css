@@ -1,0 +1,17 @@
+._button-b_inv {
+  font: inherit;
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid #8a2b06;
+  padding: 0.5rem 2rem;
+  border-radius: 25px;
+  margin-left: 1rem;
+  color: #8a2b06;
+}
+
+._button-b_inv:hover,
+._button-b_inv:active {
+  background-color: #5a1a01;
+  border-color: #5a1a01;
+  color: white;
+}
