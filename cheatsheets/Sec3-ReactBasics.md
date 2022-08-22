@@ -160,6 +160,8 @@ npm start
   ```
   > *Refer to following course section for a detailed explanation https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25599488#overview*
 
+- `.concat(element)` is a built in method which is called on an array. It returns a copy of the array with the given element added to it. It is used within **reducer** function generally.
+
 ## Inside `index.js`
 Basically to import react:
 ```javascript
