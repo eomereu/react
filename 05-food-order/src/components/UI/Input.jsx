@@ -2,13 +2,13 @@ import React from "react";
 
 import "./Input.css";
 
-const Input = (props) => {
+const Input = React.forwardRef((props, ref) => {
   return (
     <div className="_input">
       <label htmlFor={props.feat.id}>{props.label}</label>
-      <input {...props.feat} />
+      <input ref={ref} {...props.feat} />
     </div>
   );
-};
+});
 
 export default Input;
