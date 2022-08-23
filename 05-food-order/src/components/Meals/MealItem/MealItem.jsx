@@ -12,7 +12,7 @@ const MealItem = (props) => {
   const addToCartHandler = (amount) => {
     cartCtx.addItem({
       id: props.id,
-      name: props.title,
+      name: props.name,
       amount: amount,
       price: props.price,
     });
@@ -22,7 +22,7 @@ const MealItem = (props) => {
     <li className="meal_item-meal">
       <div>
         <div className="meal_item-title_al_tags">
-          <h3>{props.title}</h3>
+          <h3>{props.name}</h3>
           <span className="meal_item-al_tags">{props.al_tags}</span>
         </div>
         <div className="meal_item-desription">{props.description}</div>

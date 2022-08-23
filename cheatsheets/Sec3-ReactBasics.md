@@ -161,6 +161,32 @@ npm start
   > *Refer to following course section for a detailed explanation https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25599488#overview*
 
 - `.concat(element)` is a built in method which is called on an array. It returns a copy of the array with the given element added to it. It is used within **reducer** function generally.
+  ```javascript
+  const cartReducer = (state, action) => {
+    if (action.type == "ADD_ITEM") {
+      const updatedItems = state.items.concat(action.item);
+      const updatedTotalAmount =
+        state.totalAmount + action.item.price * action.item.amount;
+      return {
+        items: updatedItems,
+        totalAmount: updatedTotalAmount,
+      };
+    }
+    return defaultCartState;
+  };
+  ```
+
+- `.bind(null, parameter)` is a built in method which is called on a function. It ensures that given parameter passed to it when the function is called:
+  ```javascript
+  <CartItem
+    key={item.id}
+    name={item.name}
+    amount={item.amount}
+    price={item.price}
+    onAdd={cartItemAddHandler.bind(null, item)}
+    onRemove={cartItemRemoveHandler.bind(null, item.id)}
+  />
+  ```
 
 ## Inside `index.js`
 Basically to import react:
