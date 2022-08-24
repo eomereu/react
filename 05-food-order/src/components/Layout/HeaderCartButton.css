@@ -40,7 +40,7 @@
   animation: bump 300ms ease-out;
 }
 
-@keyframes hcb__bump {
+@keyframes bump {
   0% {
     transform: scale(1);
   }

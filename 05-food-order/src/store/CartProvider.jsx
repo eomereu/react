@@ -43,7 +43,7 @@ const cartReducer = (state, action) => {
     let updatedItems;
     let updatedTotalAmount = state.totalAmount;
 
-    if (existingCartItem.amount == 1) {
+    if (existingCartItem.amount === 1) {
       updatedItems = [...state.items]
       updatedItems.pop(existingCartItemIndex)
     } else {
