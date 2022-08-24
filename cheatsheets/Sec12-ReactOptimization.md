@@ -67,3 +67,6 @@ App component *(parent)*
 ```
 > *The reason we included the parent component above, is due to the fact that, there is an additional array created there which is then passed to the child component. So in order to stop DemoList component to be re-evaluated redundantly, we must ensure to memoize both of the arrays.*
 > *Please beware that using `useMemo` would not be very beneficial all the time. However in cases like sorting etc. it may be a good choice.*
+
+## Section 13: An Alternative Way Of Building Components: Class-based Components
+I am skipping this section for now. Please refer to the link for the beginning of this section: *https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25599684#overview*
