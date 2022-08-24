@@ -31,3 +31,7 @@ function App() {
 ```
 > *Please beware that `useCallback` also requires a dependency array like `useEffect`*
 > *Please refer to the following course section for a detailed explanation of `useEffect` https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25599604#overview and refer to the following course section for details on dependencies of `useEffect` and **closures** https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25599610#overview*
+
+## State Scheduling & Batching
+Please refer to the following course section for a detailed information about **state scheduling and batching** *https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25599626#overview*
+
