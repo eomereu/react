@@ -188,6 +188,14 @@ npm start
   />
   ```
 
+- Filtering an array. Returns the items not equal to `action.id`, which also means deleting that one...
+  ```javascript
+  let updatedItems;
+  if (existingItem.amount === 1) {
+    updatedItems = state.items.filter(item => item.id !== action.id);
+  }
+  ```
+
 ## Inside `index.js`
 Basically to import react:
 ```javascript
