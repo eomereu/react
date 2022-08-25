@@ -98,3 +98,38 @@ useEffect(() => {
 [**Firebase**](https://firebase.google.com/) is a backend service provided by Google. It's a free, no code needed backend service which provides lots of features. Please refer to the following course section for explanation on Firebase *https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25599822#content*
 > *Please beware that when a new project is created, after during creation of the database, do not forget to start it in **Test mode** otherwise we won't be able to send requests.*
 > *It is **required** to add `.json` ending when sending a request to Firebase*
+
+## Sending a 'POST' Request
+A sample POST request
+```javascript
+const addMovieHandler = async (movie) => {
+  const response = await fetch('https://somename.firebaseio.com/movies.json', {
+    method: 'POST',
+    body: JSON.stringify(movie),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  const data = await response.json();
+  console.log(data)
+}
+```
+Up above by
+- `method: 'POST'` we set our *fetch type* to a POST request
+- `body: JSON.stringify(movie)` we are turning our object to JSON to be able to give it in correct form
+- `headers: {'Content-Type': 'application/json'}` we let server to know that we are passing it a JSON
+An extra code piece on how to get data from Firebase, and loop over them to get content:
+```javascript
+const loadedMovies = [];
+
+for (const key in data) {
+  loadedMovies.push({
+    id: key,
+    title: data[key].title,
+    openingText: data[key].openingText,
+    releaseDate: data[key].releaseDate
+  });
+}
+
+setMovies(loadedMovies);
+```
