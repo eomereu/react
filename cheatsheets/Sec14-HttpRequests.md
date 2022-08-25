@@ -93,3 +93,8 @@ useEffect(() => {
 }, [fetchMoviesHandler]);
 ```
 > *Please beware that we wrapped our function within `useCallback` because we want it to be only changes whenever its outer dependencies change. Otherwise we would cause an infinite loop with `useEffect`*
+
+## Firebase
+[**Firebase**](https://firebase.google.com/) is a backend service provided by Google. It's a free, no code needed backend service which provides lots of features. Please refer to the following course section for explanation on Firebase *https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25599822#content*
+> *Please beware that when a new project is created, after during creation of the database, do not forget to start it in **Test mode** otherwise we won't be able to send requests.*
+> *It is **required** to add `.json` ending when sending a request to Firebase*
