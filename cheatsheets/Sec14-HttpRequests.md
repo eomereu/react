@@ -96,8 +96,15 @@ useEffect(() => {
 
 ## Firebase
 [**Firebase**](https://firebase.google.com/) is a backend service provided by Google. It's a free, no code needed backend service which provides lots of features. Please refer to the following course section for explanation on Firebase *https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25599822#content*
-> *Please beware that when a new project is created, after during creation of the database, do not forget to start it in **Test mode** otherwise we won't be able to send requests.*
-> *It is **required** to add `.json` ending when sending a request to Firebase*
+> *Please beware that when a new project is created, after during creation of the database, do not forget to start it in **Test mode** otherwise we won't be able to send requests. On the other hand if we want to start in normal mode then we need to apply the following rules onto our database under **Rules** tab.*
+```json
+{
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
+}
+```
 
 ## Sending a 'POST' Request
 A sample POST request
@@ -119,6 +126,7 @@ Up above by
 - `body: JSON.stringify(movie)` we are turning our object to JSON to be able to give it in correct form
 - `headers: {'Content-Type': 'application/json'}` we let server to know that we are passing it a JSON
 An extra code piece on how to get data from Firebase, and loop over them to get content:
+> *Please beware that it is **required** to add `.json` ending when sending a request to Firebase*
 ```javascript
 const loadedMovies = [];
 
