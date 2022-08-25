@@ -42,3 +42,18 @@ async function fetchMoviesHandler() {
 };
 ```
 > *Please keep in mind that **async-await** version is the one which is generally preferred.*
+
+## Handling Errors
+Normally when we get a response from the server based on our request, it simply returns us a status code to show the result. In **axios** when we get an error-like status code like 400 or 500, it throws and error and we can catch this with the help of `try` block in **async-await** implementation *(with the help of `.catch()` in **.then()** implementation)*. However **fetch** does not throw and error in these scenarios, so we need to handle this on our own:
+```javascript
+try {
+  const response = await fetch("https://swapi.dev/api/films");
+  if (!response.ok) {
+    throw new Error('Error! Code: ' + response.status);
+  }
+  ...
+} catch (error) {
+  setError(error.message);
+}
+return <p>{error}</p>
+```
