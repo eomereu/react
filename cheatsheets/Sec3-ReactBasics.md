@@ -176,7 +176,7 @@ npm start
   };
   ```
 
-- `.bind(null, parameter)` is a built in method which is called on a function. It ensures that given parameter passed to it when the function is called:
+- `.bind(null, parameter)` is a built in method which is called on a function. It ensures that given parameter passed to it when the function is called. The first argument specifies the value of `this` keyword of the function. Apart from that if we give additional arguments to the function that we used bind on it, those additional parameters will be appended to it.
   ```javascript
   <CartItem
     key={item.id}
@@ -187,6 +187,7 @@ npm start
     onRemove={cartItemRemoveHandler.bind(null, item.id)}
   />
   ```
+  > *Please refer to the part of the video which is marked with **.bind() method** note in the following course section https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/25599916#notes*
 
 - Filtering an array. Returns the items not equal to `action.id`, which also means deleting that one...
   ```javascript
