@@ -1,3 +1,44 @@
+# Forms
+A well-arranged custom Input Hook:  
+use-input.js
+```javascript
+import { useState } from "react";
+
+const useInput = (validate) => {
+  const [enteredValue, setEnteredValue] = useState("");
+  const [isTouched, setIsTouched] = useState(false);
+
+  const valueIsValid = validate(enteredValue);
+  const hasError = !valueIsValid && isTouched;
+
+  const valueChangeHandler = (event) => {
+    setEnteredValue(event.target.value);
+  };
+
+  const valueBlurHandler = () => {
+    setIsTouched(true);
+  };
+
+  const reset = () => {
+    setEnteredValue("");
+    setIsTouched(false);
+  };
+
+  return {
+    value: enteredValue,
+    isValid: valueIsValid,
+    hasError,
+    reset,
+    valueChangeHandler,
+    valueBlurHandler,
+  };
+};
+
+export default useInput;
+```
+The component where we use our hook:  
+SimpleInput.js
+```javascript
 import useInput from "../hooks/use-input";
 
 const SimpleInput = (props) => {
@@ -85,3 +126,4 @@ const SimpleInput = (props) => {
 };
 
 export default SimpleInput;
+```
