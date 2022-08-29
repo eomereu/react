@@ -1,0 +1,17 @@
+._button-c {
+  font: inherit;
+  cursor: pointer;
+  background-color: #4d1601;
+  border: 1px solid #4d1601;
+  color: white;
+  padding: 0.25rem 2rem;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+._button-c:hover,
+._button-c:active {
+  background-color: #ffffff;
+  border-color: #fff;
+  color: #5a1a01;
+}
