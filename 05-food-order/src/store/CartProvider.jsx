@@ -66,23 +66,23 @@ const cartReducer = (state, action) => {
 };
 
 const CartProvider = (props) => {
-  const [cartState, dispatchCartState] = useReducer(
+  const [cartState, dispatchMealsState] = useReducer(
     cartReducer,
     defaultCartState
   );
 
-  const addItemToCartHandler = (item) => {
-    dispatchCartState({ type: "ADD_ITEM", item: item });
+  const saveMealHandler = (item) => {
+    dispatchMealsState({ type: "ADD", item: item });
   };
-  const removeItemFromCartHandler = (id) => {
-    dispatchCartState({ type: "REMOVE_ITEM", id: id });
+  const listMealsHandler = (id) => {
+    dispatchMealsState({ type: "LIST", id: id });
   };
 
   const cartContext = {
     items: cartState.items,
     totalAmount: cartState.totalAmount,
-    addItem: addItemToCartHandler,
-    removeItem: removeItemFromCartHandler,
+    saveMeals: saveMealHandler,
+    listMeals: listMealsHandler,
   };
 
   return (

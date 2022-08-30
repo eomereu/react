@@ -13,3 +13,16 @@ body {
   background-color: #3f3f3f;
 }
 
+.app-content {
+  display: flex;
+  flex-direction: column;
+  column-gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-admin_content {
+  max-width: 80rem;
+  width: auto;
+  margin: 0 auto 2rem auto;
+}
