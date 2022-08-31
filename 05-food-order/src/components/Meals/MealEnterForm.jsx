@@ -9,7 +9,7 @@ import "./MealEnterForm.css";
 const isId = (value) => /\w+/.test(value);
 const isName = (value) => /\w+/.test(value);
 const isPrice = (value) => +value > 0;
-const isTags = (value) => /(^$)|([A-Z]{1})|(([A-Z],)+[A-Z]{1})/.test(value);
+const isTags = (value) => /(^$)|(^[A-Z]$)|(^([A-Z],)+[A-Z]$)/.test(value);
 
 const MealEnterForm = (props) => {
   const {
@@ -150,7 +150,7 @@ const MealEnterForm = (props) => {
           )}
           <div className={descClasses}>
             <label htmlFor="desc">Description</label>
-            <input
+            <textarea
               type="text"
               id="desc"
               value={descValue}

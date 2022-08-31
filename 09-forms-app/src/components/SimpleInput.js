@@ -17,7 +17,7 @@ const SimpleInput = (props) => {
     reset: resetEmail,
     valueChangeHandler: emailChangeHandler,
     valueBlurHandler: emailBlurHandler,
-  } = useInput((value) => /\w+@\w+(\.\w)+/.test(value.trim()));
+  } = useInput((value) => /^\w+@\w+(\.\w+)+$/.test(value.trim()));
 
   let formIsValid = false;
 

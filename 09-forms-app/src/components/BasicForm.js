@@ -2,7 +2,7 @@ import useInputt from "../hooks/use-inputt";
 
 const isName = (value) => /\w+/.test(value.trim());
 const isLastName = (value) => /\w+/.test(value.trim());
-const isEmail = (value) => /\w+@\w+(\.\w)+/.test(value.trim());
+const isEmail = (value) => /^\w+@\w+(\.\w+)+$/.test(value.trim());
 const isPassword = (value) => value.trim().length >= 6;
 
 const BasicForm = (props) => {

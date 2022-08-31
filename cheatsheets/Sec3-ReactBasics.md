@@ -131,8 +131,10 @@ npm start
 
 - Refer to *https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions* for Regular Expressions.
   ```javascript
-  // email validator RegEx:
-  /\w+@\w+(\.\w)+/.test(action.value)
+  // email validator RegEx: Matches 1.eomer@mail.com 2.eomer@mail.com.eu
+  /^\w+@\w+(\.\w+)+$/.test(action.value)
+  // tags validator RegEx: matches 1.(empty string) 2.A 3.A,G,T...
+  /(^$)|(^[A-Z]$)|(^([A-Z],)+[A-Z]$)/.test(action.value)
   ```
 
 - Spreading and getting all props:
