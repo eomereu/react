@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import useInput from "../../hooks/use-input";
 import Button from "../UI/Buttons/Button";
 import Card from "../UI/Card";
@@ -12,6 +12,7 @@ const isPrice = (value) => +value > 0;
 const isTags = (value) => /(^$)|(^[A-Z]$)|(^([A-Z],)+[A-Z]$)/.test(value);
 
 const MealEnterForm = (props) => {
+  const [idIsNotUnique, setIdIsNotUnique] = useState(null);
   const {
     value: idValue,
     valueIsValid: idIsValid,
@@ -55,6 +56,25 @@ const MealEnterForm = (props) => {
 
   const formIsValid = idIsValid && nameIsValid && priceIsValid && tagsIsValid;
 
+  useEffect(() => {
+    setIdIsNotUnique(null);
+    const identifier = setTimeout(() => {
+      let alreadyExists;
+      props.meals.map((meal) => {
+        if (idValue === meal.id) {
+          alreadyExists = true;
+          return;
+        } else {
+          alreadyExists = null;
+        }
+      });
+      setIdIsNotUnique(alreadyExists);
+    }, 325);
+    return () => {
+      clearTimeout(identifier);
+    };
+  }, [idValue, props.meals]);
+
   const { loading, error, sendRequest: saveMealRequest } = useHttp();
 
   const saveMealHandler = (mealInfo) => {
@@ -67,27 +87,43 @@ const MealEnterForm = (props) => {
           name: mealInfo.nameValue,
           description: mealInfo.descValue,
           price: mealInfo.priceValue,
-          tags: mealInfo.tagsValue
+          tags: mealInfo.tagsValue,
         },
         headers: {
           "Content-Type": "application/json",
-        }
+        },
       },
       () => {}
-      );
-    };
-    
-  const mealInfo = { idValue: idValue, nameValue: nameValue, descValue: descValue, priceValue: priceValue, tagsValue: tagsValue}
+    );
+  };
+
+  const mealInfo = {
+    idValue: idValue,
+    nameValue: nameValue,
+    descValue: descValue,
+    priceValue: priceValue,
+    tagsValue: tagsValue,
+  };
+
+  const meal = {
+    key: mealInfo.id,
+    id: mealInfo.idValue,
+    name: mealInfo.nameValue,
+    description: mealInfo.descriptionValue,
+    price: mealInfo.priceValue,
+    tags: mealInfo.tagsValue,
+  };
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
 
     if (!formIsValid) {
+      console.log("Form is Invalid! Not submitting...");
       return;
     }
 
-    console.log(mealInfo);
     saveMealHandler(mealInfo);
+    props.onSaveMeal(meal);
 
     idReset();
     nameReset();
@@ -96,9 +132,10 @@ const MealEnterForm = (props) => {
     tagsReset();
   };
 
-  const idClasses = idHasError
-    ? "meal_enter_form-section invalid"
-    : "meal_enter_form-section";
+  const idClasses =
+    idHasError || idIsNotUnique
+      ? "meal_enter_form-section invalid"
+      : "meal_enter_form-section";
   const nameClasses = nameHasError
     ? "meal_enter_form-section invalid"
     : "meal_enter_form-section";
@@ -131,6 +168,11 @@ const MealEnterForm = (props) => {
           {idHasError && (
             <p className="meal_enter_form-error_text">
               ID must not be empty or a non-alpha char
+            </p>
+          )}
+          {idIsNotUnique && (
+            <p className="meal_enter_form-error_text">
+              This ID already exists!
             </p>
           )}
           <div className={nameClasses}>

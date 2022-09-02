@@ -6,7 +6,7 @@ const Meals = (props) => {
   return (
     <>
       <MealsSummary />
-      <AvailableMeals />
+      <AvailableMeals meals={props.meals} onListMeals={props.onListMeals} />
     </>
   );
 };

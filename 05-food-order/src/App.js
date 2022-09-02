@@ -7,6 +7,8 @@ import CartProvider from "./store/CartProvider";
 import MealEnterForm from "./components/Meals/MealEnterForm";
 
 function App() {
+  const [meals, setMeals] = useState([]);
+
   const [cartActive, dispatchCartActive] = useReducer((state) => {
     return !state;
   }, false);
@@ -15,6 +17,14 @@ function App() {
     return !state;
   }, false);
 
+  const onSaveMealHandler = (newMeal) => {
+    setMeals([...meals].concat(newMeal));
+  };
+
+  const onListMealsHandler = (updatedMeals) => {
+    setMeals(updatedMeals);
+  }
+
   return (
     <CartProvider>
       {cartActive && <Cart onCloseCart={dispatchCartActive} />}
@@ -22,10 +32,14 @@ function App() {
       <div className="app-content">
         {adminMode && (
           <div className="app-admin_content">
-            <MealEnterForm onAdminMode={dispatchAdminMode} />
+            <MealEnterForm
+              onAdminMode={dispatchAdminMode}
+              onSaveMeal={onSaveMealHandler}
+              meals={meals}
+            />
           </div>
         )}
-        <Meals />
+        <Meals meals={meals} onListMeals={onListMealsHandler} />
       </div>
     </CartProvider>
   );

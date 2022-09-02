@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { DUMMY_MEALS } from "../../constants";
 import useHttp from "../../hooks/use-http";
 import Card from "../UI/Card";
 
@@ -7,7 +6,6 @@ import "./AvailableMeals.css";
 import MealItem from "./MealItem/MealItem";
 
 const AvailableMeals = (props) => {
-  const [meals, setMeals] = useState([]);
   const { loading, error, sendRequest: fetchMeals } = useHttp();
   const dbUrl = "https://learn-react-7c3cf-default-rtdb.europe-west1.firebasedatabase.app/meals.json";
 
@@ -17,7 +15,7 @@ const AvailableMeals = (props) => {
 
       for (const key in data) {
         updatedMeals.push({
-          key: key,
+          key: data[key].id,
           id: data[key].id,
           name: data[key].name,
           description: data[key].description,
@@ -26,13 +24,13 @@ const AvailableMeals = (props) => {
         });
       }
 
-      setMeals(updatedMeals);
+      props.onListMeals(updatedMeals);
     };
 
     fetchMeals({ url: dbUrl }, processMeals);
   }, [fetchMeals]);
 
-  const mealsList = meals.map((meal) => (
+  const mealsList = props.meals.map((meal) => (
     <MealItem
       key={meal.key}
       id={meal.id}
