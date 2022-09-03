@@ -15,15 +15,16 @@ const useHttp = () => {
         body: config.body ? JSON.stringify(config.body) : null,
       });
 
+
       if (!response.ok) {
-        throw new Error("Error! Status Code: " + response.status);
+        throw new Error("Error!");
       }
 
       const data = await response.json();
       applyData(data);
     } catch (e) {
-      setError(e.message || "Something went wrong.");
-      console.log(e.message || "Something went wrong.");
+      setError("Error: " + e.message + "!" || "Something went wrong.");
+      console.log("Error: " + e.message + "!" || "Something went wrong.");
     }
 
     setLoading(false);

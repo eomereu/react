@@ -45,7 +45,7 @@ const AvailableMeals = (props) => {
     <section className="available_meals">
       <Card>
         {loading && !error ? <p>Loading...</p> : <ul>{mealsList}</ul>}
-        {error && <p>{error}</p>}
+        {error && <p className="available_meals-error_text">{error}</p>}
       </Card>
     </section>
   );

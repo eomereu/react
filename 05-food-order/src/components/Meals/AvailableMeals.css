@@ -11,6 +11,12 @@
   padding: 0;
 }
 
+.available_meals-error_text {
+  color: rgb(202, 74, 74);
+  font-weight: 600;
+  text-align: center;
+}
+
 @keyframes available_meals-appear {
   from {
     opacity: 0;
