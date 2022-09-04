@@ -1,0 +1,49 @@
+.checkout-form {
+  margin: 1rem 0;
+  height: 19rem;
+  overflow: auto;
+}
+
+.checkout-control {
+  margin-bottom: 0.5rem;
+}
+
+.checkout-control label {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.checkout-control input {
+  font: inherit;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 20rem;
+  max-width: 100%;
+}
+
+.checkout-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.checkout-actions .submit {
+  border: 1px solid #5a1a01;
+  background-color: #5a1a01;
+  color: white;
+}
+
+.checkout-actions .submit:hover,
+.checkout-actions .submit:active {
+  background-color: #7a2706;
+}
+
+.checkout-invalid label {
+  color: #ca3e51;
+}
+
+.checkout-invalid input {
+  border-color: #aa0b20;
+  background-color: #ffeff1;
+}
