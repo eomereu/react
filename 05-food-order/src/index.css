@@ -6,6 +6,22 @@
 
 html {
   font-family: 'Noto Sans JP', sans-serif;
+  scrollbar-width: thin;
+  scrollbar-color: #8a2b06 #cfcfcf;
+}
+
+html::-webkit-scrollbar {
+  width: 0.5vw;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: #8a2b06;
+  border-radius: 5px;
+}
+
+html::-webkit-scrollbar-track {
+  background-color: #cfcfcf;
+  border-radius: 5px;
 }
 
 body {

@@ -10,28 +10,31 @@ const Checkout = (props) => {
   };
 
   return (
-    <form onSubmit={confirmHandler}>
-      <div className="checkout-control">
-        <label htmlFor="name">Name</label>
-        <input type="text" id="name" />
-      </div>
-      <div className="checkout-control">
-        <label htmlFor="street">Street</label>
-        <input type="text" id="street" />
-      </div>
-      <div className="checkout-control">
-        <label htmlFor="postal">Postal Code</label>
-        <input type="text" id="postal" />
-      </div>
-      <div className="checkout-control">
-        <label htmlFor="city">City</label>
-        <input type="text" id="city" />
-      </div>
-      <div className="checkout-actions">
-        <ButtonBInv onClick={props.onCheckout}>Cancel</ButtonBInv>
-        <ButtonB>Confirm</ButtonB>
-      </div>
-    </form>
+    <>
+      <p className="checkout-header">Checkout</p>
+      <form className="checkout-form" onSubmit={confirmHandler}>
+        <div className="checkout-control">
+          <label htmlFor="name">Name</label>
+          <input type="text" id="name" />
+        </div>
+        <div className="checkout-control">
+          <label htmlFor="street">Street</label>
+          <input type="text" id="street" />
+        </div>
+        <div className="checkout-control">
+          <label htmlFor="postal">Postal Code</label>
+          <input type="text" id="postal" />
+        </div>
+        <div className="checkout-control">
+          <label htmlFor="city">City</label>
+          <input type="text" id="city" />
+        </div>
+        <div className="checkout-actions">
+          <ButtonBInv onClick={props.onCheckout}>Cancel</ButtonBInv>
+          <ButtonB>Confirm</ButtonB>
+        </div>
+      </form>
+    </>
   );
 };
 

@@ -16,9 +16,10 @@
 
 .modal-modal {
   position: fixed;
-  top: 20vh;
+  top: 5vh;
   left: 5%;
   width: 90%;
+  max-height: 90vh;
   background-color: white;
   padding: 0 2rem 2rem 2rem;
   border-radius: 14px;

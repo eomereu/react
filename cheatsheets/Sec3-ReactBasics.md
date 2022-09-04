@@ -114,11 +114,6 @@ npm start
   if (+age < 1){}
   ```
 
-- Adding the following style for the paragraph in a CSS module, will break line on `\n`
-  ```css
-  white-space: pre-line;
-  ```
-
 - **React Fragment** is simply a component that returns *props.children* only. It's kind of a simple wrapper. It fulfills the requirement of returning exactly one JSX element. It does this by avoiding unnecessary compiled hundreds of divs one in another.  
   - The original way of it:
     ```javascript
@@ -327,3 +322,55 @@ function ExpenseItem(props) {
 }
 ...
 ```
+
+## CSS
+- Adding the following style for the paragraph in a CSS module, will break line on `\n`
+  ```css
+  white-space: pre-line;
+  ```
+
+- Creating custom CSS Scrollbar:
+  ```css
+  /* ALL BROWSERS EXCEPT FOR FIREFOX */
+  /* of the main page */
+  html::-webkit-scrollbar {
+    width: 0.5vw;
+  }
+
+  html::-webkit-scrollbar-thumb {
+    background-color: #8a2b06;
+    border-radius: 5px;
+  }
+
+  html::-webkit-scrollbar-track {
+    background-color: #cfcfcf;
+    border-radius: 5px;
+  }
+  /* of a div */
+  .cart-items::-webkit-scrollbar {
+  width: 0.5vw;
+  }
+
+  .cart-items::-webkit-scrollbar-thumb {
+    background-color: #8a2b06;
+    border-radius: 5px;
+  }
+
+  .cart-items::-webkit-scrollbar-track {
+    background-color: #cfcfcf;
+    border-radius: 5px;
+  }
+
+  /* FIREFOX */
+  /* of the main page */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: #8a2b06 #cfcfcf; /* thumb | track */
+  }
+  /* of a div */
+  .cart-items {
+    scrollbar-width: thin;
+    scrollbar-color: #8a2b06 #cfcfcf; /* thumb | track */
+  }
+  
+  ```
