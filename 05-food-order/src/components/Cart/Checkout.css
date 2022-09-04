@@ -72,3 +72,8 @@
   border-color: #aa0b20;
   background-color: #ffeff1;
 }
+
+.checkout-error_text {
+  color: red;
+  margin-top: 0;
+}
