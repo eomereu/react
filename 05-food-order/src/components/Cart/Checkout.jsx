@@ -1,13 +1,16 @@
-import React, { useId } from "react";
+import React, { useContext } from "react";
 import useInput from "../../hooks/use-input";
 import ButtonB from "../UI/Buttons/ButtonB";
 import ButtonBInv from "../UI/Buttons/ButtonBInv";
 
+import CartContext from "../../store/cart-context";
 import "./Checkout.css";
 
 const isOK = (value) => /\w+/.test(value);
 
 const Checkout = (props) => {
+  const cartCtx = useContext(CartContext);
+
   const {
     value: nameValue,
     valueIsValid: nameIsValid,
@@ -41,7 +44,8 @@ const Checkout = (props) => {
     reset: cityReset,
   } = useInput(isOK);
 
-  const formIsValid = nameIsValid && streetIsValid && postalCodeIsValid && cityIsValid;
+  const formIsValid =
+    nameIsValid && streetIsValid && postalCodeIsValid && cityIsValid;
 
   const confirmHandler = (event) => {
     event.preventDefault();
@@ -50,6 +54,15 @@ const Checkout = (props) => {
       console.log("Form is not valid!");
       return;
     }
+
+    props.onSubmitOrder({
+      name: nameValue,
+      street: streetValue,
+      postalCode: postalCodeValue,
+      city: cityValue,
+    });
+
+    cartCtx.clearItems();
 
     nameReset();
     streetReset();
@@ -83,7 +96,11 @@ const Checkout = (props) => {
             onBlur={nameBlurHandler}
             value={nameValue}
           />
-          {nameHasError && <p className="checkout-error_text">Name must not be empty or a non-alpha char</p>}
+          {nameHasError && (
+            <p className="checkout-error_text">
+              Name must not be empty or a non-alpha char
+            </p>
+          )}
         </div>
         <div className={streetClasses}>
           <label htmlFor="street">Street*</label>
@@ -95,7 +112,9 @@ const Checkout = (props) => {
             value={streetValue}
           />
           {streetHasError && (
-            <p className="checkout-error_text">Street must not be empty or a non-alpha char</p>
+            <p className="checkout-error_text">
+              Street must not be empty or a non-alpha char
+            </p>
           )}
         </div>
         <div className={postalCodeClasses}>
@@ -108,7 +127,9 @@ const Checkout = (props) => {
             value={postalCodeValue}
           />
           {postalCodeHasError && (
-            <p className="checkout-error_text">Postal Code must not be empty or a non-alpha char</p>
+            <p className="checkout-error_text">
+              Postal Code must not be empty or a non-alpha char
+            </p>
           )}
         </div>
         <div className={cityClasses}>
@@ -120,7 +141,11 @@ const Checkout = (props) => {
             onBlur={cityBlurHandler}
             value={cityValue}
           />
-          {cityHasError && <p className="checkout-error_text">City must not be empty or a non-alpha char</p>}
+          {cityHasError && (
+            <p className="checkout-error_text">
+              City must not be empty or a non-alpha char
+            </p>
+          )}
         </div>
         <div className="checkout-actions">
           <ButtonBInv onClick={props.onCheckout}>Cancel</ButtonBInv>

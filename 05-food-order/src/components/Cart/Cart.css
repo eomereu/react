@@ -46,3 +46,7 @@
 .cart-actions {
   text-align: right;
 }
+
+.cart-feedback_success {
+  padding-top: 1rem;
+}
