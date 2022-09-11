@@ -20,6 +20,7 @@
   color: #3c0080;
   margin: 2rem 0;
   font-weight: bold;
+  min-height: 3rem;
 }
 
 .counter button {

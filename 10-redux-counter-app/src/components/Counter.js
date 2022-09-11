@@ -6,6 +6,7 @@ import { useState } from "react";
 const Counter = () => {
   const dispatch = useDispatch();
   const counter = useSelector((state) => state.counter);
+  const show = useSelector((state) => state.showCounter);
 
   const [amount, setAmount] = useState(0);
 
@@ -17,7 +18,9 @@ const Counter = () => {
     dispatch({ type: "DECREMENT" });
   };
 
-  const toggleCounterHandler = () => {};
+  const toggleCounterHandler = () => {
+    dispatch({ type: "TOGGLE" });
+  };
 
   const amountChangeHandler = (event) => {
     setAmount(event.target.value);
@@ -25,12 +28,13 @@ const Counter = () => {
 
   const amountHandler = (event) => {
     dispatch({ type: "CHANGE", amount: amount });
+    setAmount(0);
   };
 
   return (
     <main className={classes.counter}>
       <h1>Redux Counter</h1>
-      <div className={classes.value}>{counter}</div>
+      <div className={classes.value}>{show && <div>{counter}</div>}</div>
       <div>
         <div className={classes.amount}>
           <label htmlFor="amount"></label>
