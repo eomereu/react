@@ -194,6 +194,15 @@ npm start
   }
   ```
 
+- Simple `useState` switcher:
+```javascript
+const [checkout, setCheckout] = useState(false);
+
+const onCheckoutHandler = () => {
+  setCheckout((prevState) => !prevState);
+};
+```
+
 ## Inside `index.js`
 Basically to import react:
 ```javascript
